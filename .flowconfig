@@ -1,8 +1,4 @@
 [ignore]
-.*/build
-.*/config
-.*/node_modules
-.*/gulpfile.js
 
 # We fork some components by platform.
 .*/*.android.js
