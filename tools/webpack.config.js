@@ -7,13 +7,13 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import path from 'path';
-import webpack from 'webpack';
-import extend from 'extend';
-import AssetsPlugin from 'assets-webpack-plugin';
+import path from 'path'
+import webpack from 'webpack'
+import extend from 'extend'
+import AssetsPlugin from 'assets-webpack-plugin'
 
-const DEBUG = !process.argv.includes('--release');
-const VERBOSE = process.argv.includes('--verbose');
+const DEBUG = !process.argv.includes('--release')
+const VERBOSE = process.argv.includes('--verbose')
 const AUTOPREFIXER_BROWSERS = [
   'Android 2.3',
   'Android >= 4',
@@ -23,11 +23,11 @@ const AUTOPREFIXER_BROWSERS = [
   'iOS >= 7',
   'Opera >= 12',
   'Safari >= 7.1',
-];
+]
 const GLOBALS = {
   'process.env.NODE_ENV': DEBUG ? '"development"' : '"production"',
   __DEV__: DEBUG,
-};
+}
 
 //
 // Common configuration chunk to be used for both
@@ -104,9 +104,9 @@ const config = {
       require('postcss-import')({ addDependencyTo: bundler }),
       require('precss')(),
       require('autoprefixer')({ browsers: AUTOPREFIXER_BROWSERS }),
-    ];
+    ]
   },
-};
+}
 
 //
 // Configuration for the client-side bundle (client.js)
@@ -144,7 +144,7 @@ const clientConfig = extend(true, {}, config, {
       new webpack.optimize.AggressiveMergingPlugin(),
     ] : []),
   ],
-});
+})
 
 //
 // Configuration for the server-side bundle (server.js)
@@ -164,8 +164,8 @@ const serverConfig = extend(true, {}, config, {
       const isExternal =
         request.match(/^[@a-z][a-z\/\.\-0-9]*$/i) &&
         !request.match(/^react-routing/) &&
-        !context.match(/[\\/]react-routing/);
-      cb(null, Boolean(isExternal));
+        !context.match(/[\\/]react-routing/)
+      cb(null, Boolean(isExternal))
     },
   ],
   node: {
@@ -183,6 +183,6 @@ const serverConfig = extend(true, {}, config, {
     new webpack.BannerPlugin('require("source-map-support").install();',
       { raw: true, entryOnly: false }),
   ],
-});
+})
 
-export default [clientConfig, serverConfig];
+export default [clientConfig, serverConfig]
