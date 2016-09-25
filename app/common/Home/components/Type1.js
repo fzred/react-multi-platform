@@ -36,10 +36,10 @@ const imgHeight = width * 0.64
 const styles = StyleSheet.create({
   wrapper: {
     height: imgHeight,
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   img: {
     flex: width,
     height: imgHeight,
-  }
+  },
 })
