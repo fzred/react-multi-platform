@@ -7,15 +7,15 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import db from 'pg';
-import Promise from 'bluebird';
-import { databaseUrl } from '../config';
+import db from 'pg'
+import Promise from 'bluebird'
+import { databaseUrl } from '../config'
 
 // TODO: Customize database connection settings
 /* jscs:disable requireCamelCaseOrUpperCaseIdentifiers */
-db.defaults.ssl = true;
-db.defaults.poolSize = 2;
-db.defaults.application_name = 'RSK';
+db.defaults.ssl = true
+db.defaults.poolSize = 2
+db.defaults.application_name = 'RSK'
 /* jscs:enable requireCamelCaseOrUpperCaseIdentifiers */
 
 /**
@@ -23,9 +23,9 @@ db.defaults.application_name = 'RSK';
  * https://github.com/brianc/node-postgres/wiki/Client
  */
 function AsyncClient(client) {
-  this.client = client;
-  this.query = this.query.bind(this);
-  this.end = this.end.bind(this);
+  this.client = client
+  this.query = this.query.bind(this)
+  this.end = this.end.bind(this)
 }
 
 AsyncClient.prototype.query = function query(sql, ...args) {
@@ -33,26 +33,26 @@ AsyncClient.prototype.query = function query(sql, ...args) {
     if (args.length) {
       this.client.query(sql, args, (err, result) => {
         if (err) {
-          reject(err);
+          reject(err)
         } else {
-          resolve(result);
+          resolve(result)
         }
-      });
+      })
     } else {
       this.client.query(sql, (err, result) => {
         if (err) {
-          reject(err);
+          reject(err)
         } else {
-          resolve(result);
+          resolve(result)
         }
-      });
+      })
     }
-  });
-};
+  })
+}
 
 AsyncClient.prototype.end = function end() {
-  this.client.end();
-};
+  this.client.end()
+}
 
 /**
  * Promise-based wrapper for pg.connect()
@@ -62,20 +62,20 @@ db.connect = (connect => callback => new Promise((resolve, reject) => {
   connect.call(db, databaseUrl, (err, client, done) => {
     if (err) {
       if (client) {
-        done(client);
+        done(client)
       }
 
-      reject(err);
+      reject(err)
     } else {
       callback(new AsyncClient(client)).then(() => {
-        done();
-        resolve();
+        done()
+        resolve()
       }).catch(error => {
-        done(client);
-        reject(error);
-      });
+        done(client)
+        reject(error)
+      })
     }
-  });
-}))(db.connect);
+  })
+}))(db.connect)
 
-export default db;
+export default db

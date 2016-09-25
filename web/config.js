@@ -10,17 +10,17 @@
 /* eslint-disable max-len */
 /* jscs:disable maximumLineLength */
 
-export const port = process.env.PORT || 3000;
-export const host = process.env.WEBSITE_HOSTNAME || `localhost:${port}`;
+export const port = process.env.PORT || 3000
+export const host = process.env.WEBSITE_HOSTNAME || `localhost:${port}`
 
-export const databaseUrl = process.env.DATABASE_URL || 'postgresql://demo:Lqk62xg6TBm5UhfR@demo.ctbl5itzitm4.us-east-1.rds.amazonaws.com:5432/membership01';
+export const databaseUrl = process.env.DATABASE_URL || 'postgresql://demo:Lqk62xg6TBm5UhfR@demo.ctbl5itzitm4.us-east-1.rds.amazonaws.com:5432/membership01'
 
 export const analytics = {
 
   // https://analytics.google.com/
   google: { trackingId: process.env.GOOGLE_TRACKING_ID || 'UA-XXXXX-X' },
 
-};
+}
 
 export const auth = {
 
@@ -44,4 +44,4 @@ export const auth = {
     secret: process.env.TWITTER_CONSUMER_SECRET || 'KTZ6cxoKnEakQCeSpZlaUCJWGAlTEBJj0y2EMkUBujA7zWSvaQ',
   },
 
-};
+}
