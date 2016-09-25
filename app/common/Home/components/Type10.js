@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import {
   StyleSheet,
   Navigator,
@@ -30,24 +30,29 @@ const styles = StyleSheet.create({
   },
 })
 
-export default class extends Component {
-  renderPro(item, i) {
-    return (
-      <View style={styles.proWrap} key={i}>
-        <Image source={{ uri: item.logourl }}
-          style={styles.img}
-        />
-      </View>
-    )
-  }
-
-  render() {
-    return (
-      <View style={styles.wrapper}>
-        {
-          this.props.item.list.productList.map(this.renderPro.bind(this))
-        }
-      </View>
-    )
-  }
+function renderPro(item, i) {
+  return (
+    <View style={styles.proWrap} key={i}>
+      <Image
+        source={{ uri: item.logourl }}
+        style={styles.img}
+      />
+    </View>
+  )
 }
+
+function Type10({ item }) {
+  return (
+    <View style={styles.wrapper}>
+      {
+        item.list.productList.map(renderPro)
+      }
+    </View>
+  )
+}
+
+Type10.propTypes = {
+  item: PropTypes.object.isRequired,
+}
+
+export default Type10
