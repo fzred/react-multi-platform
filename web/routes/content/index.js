@@ -7,9 +7,9 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React from 'react';
-import Content from './Content';
-import fetch from '../../core/fetch';
+import React from 'react'
+import Content from './Content'
+import fetch from '../../core/fetch'
 
 export default {
 
@@ -26,14 +26,14 @@ export default {
         query: `{content(path:"${path}"){path,title,content,component}}`,
       }),
       credentials: 'include',
-    });
-    if (resp.status !== 200) throw new Error(resp.statusText);
-    const { data } = await resp.json();
-    if (!data || !data.content) return undefined;
+    })
+    if (resp.status !== 200) throw new Error(resp.statusText)
+    const { data } = await resp.json()
+    if (!data || !data.content) return undefined
     return {
       title: data.content.title,
       component: <Content {...data.content} />,
-    };
+    }
   },
 
-};
+}

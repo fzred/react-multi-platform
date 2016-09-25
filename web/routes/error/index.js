@@ -7,8 +7,8 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React from 'react';
-import ErrorPage from './ErrorPage';
+import React from 'react'
+import ErrorPage from './ErrorPage'
 
 export default {
 
@@ -20,7 +20,7 @@ export default {
       description: error.message,
       component: <ErrorPage error={error} />,
       status: error.status || 500,
-    };
+    }
   },
 
-};
+}

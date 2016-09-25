@@ -7,9 +7,9 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { PropTypes } from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './ErrorPage.css';
+import React, { PropTypes } from 'react'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
+import s from './ErrorPage.css'
 
 function ErrorPage({ error }) {
   if (process.env.NODE_ENV !== 'production') {
@@ -19,7 +19,7 @@ function ErrorPage({ error }) {
         <p>{error.message}</p>
         <pre>{error.stack}</pre>
       </div>
-    );
+    )
   }
 
   return (
@@ -27,12 +27,12 @@ function ErrorPage({ error }) {
       <h1>Error</h1>
       <p>Sorry, a critical error occurred on this page.</p>
     </div>
-  );
+  )
 }
 
 ErrorPage.propTypes = {
   error: PropTypes.object.isRequired,
-};
+}
 
-export { ErrorPage as ErrorPageWithoutStyle };
-export default withStyles(s)(ErrorPage);
+export { ErrorPage as ErrorPageWithoutStyle }
+export default withStyles(s)(ErrorPage)

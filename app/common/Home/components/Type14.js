@@ -15,8 +15,7 @@ import { color as styleColor } from '../../styleVar'
 export default class extends Component {
   render() {
     return (
-      <View style={{ padding: 1 }}>
-      </View>
+      <View style={{ padding: 1 }} />
     )
   }
 }

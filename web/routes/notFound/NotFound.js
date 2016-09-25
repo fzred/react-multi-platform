@@ -7,10 +7,10 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { PropTypes } from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import Layout from '../../components/Layout';
-import s from './NotFound.css';
+import React, { PropTypes } from 'react'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
+import Layout from '../../components/Layout'
+import s from './NotFound.css'
 
 function NotFound({ title }) {
   return (
@@ -22,11 +22,11 @@ function NotFound({ title }) {
         </div>
       </div>
     </Layout>
-  );
+  )
 }
 
 NotFound.propTypes = {
   title: PropTypes.string.isRequired,
-};
+}
 
-export default withStyles(s)(NotFound);
+export default withStyles(s)(NotFound)

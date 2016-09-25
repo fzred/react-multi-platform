@@ -7,10 +7,10 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React from 'react';
-import NotFound from './NotFound';
+import React from 'react'
+import NotFound from './NotFound'
 
-const title = 'Page Not Found';
+const title = 'Page Not Found'
 
 export default {
 
@@ -21,7 +21,7 @@ export default {
       title,
       component: <NotFound title={title} />,
       status: 404,
-    };
+    }
   },
 
-};
+}

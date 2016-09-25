@@ -7,10 +7,10 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { PropTypes } from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import Layout from '../../components/Layout';
-import s from './Register.css';
+import React, { PropTypes } from 'react'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
+import Layout from '../../components/Layout'
+import s from './Register.css'
 
 function Register({ title }) {
   return (
@@ -22,9 +22,9 @@ function Register({ title }) {
         </div>
       </div>
     </Layout>
-  );
+  )
 }
 
-Register.propTypes = { title: PropTypes.string.isRequired };
+Register.propTypes = { title: PropTypes.string.isRequired }
 
-export default withStyles(s)(Register);
+export default withStyles(s)(Register)

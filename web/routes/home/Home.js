@@ -7,10 +7,10 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { PropTypes } from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import Layout from '../../components/Layout';
-import s from './Home.css';
+import React, { PropTypes } from 'react'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
+import Layout from '../../components/Layout'
+import s from './Home.css'
 
 function Home({ news }) {
   return (
@@ -32,7 +32,7 @@ function Home({ news }) {
         </div>
       </div>
     </Layout>
-  );
+  )
 }
 
 Home.propTypes = {
@@ -41,6 +41,6 @@ Home.propTypes = {
     link: PropTypes.string.isRequired,
     contentSnippet: PropTypes.string,
   })).isRequired,
-};
+}
 
-export default withStyles(s)(Home);
+export default withStyles(s)(Home)

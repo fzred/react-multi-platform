@@ -7,9 +7,9 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React from 'react';
-import Home from './Home';
-import fetch from '../../core/fetch';
+import React from 'react'
+import Home from './Home'
+import fetch from '../../core/fetch'
 
 export default {
 
@@ -26,13 +26,13 @@ export default {
         query: '{news{title,link,contentSnippet}}',
       }),
       credentials: 'include',
-    });
-    const { data } = await resp.json();
-    if (!data || !data.news) throw new Error('Failed to load the news feed.');
+    })
+    const { data } = await resp.json()
+    if (!data || !data.news) throw new Error('Failed to load the news feed.')
     return {
       title: 'React Starter Kit',
       component: <Home news={data.news} />,
-    };
+    }
   },
 
-};
+}

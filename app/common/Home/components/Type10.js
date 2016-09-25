@@ -12,27 +12,6 @@ import {
 } from 'react-native'
 import { color as styleColor } from '../../styleVar'
 
-export default class extends Component {
-  renderPro(item, i) {
-    return (
-      <View style={styles.proWrap} key={i}>
-        <Image source={{ uri: item.logourl }}
-               style={styles.img}/>
-      </View>
-    )
-  }
-
-  render() {
-    return (
-      <View style={styles.wrapper}>
-        {
-          this.props.item.list.productList.map(this.renderPro.bind(this))
-        }
-      </View>
-    )
-  }
-}
-
 const width = Dimensions.get('window').width
 const styles = StyleSheet.create({
   wrapper: {
@@ -48,5 +27,27 @@ const styles = StyleSheet.create({
   img: {
     width: width / 2,
     height: width / 2,
-  }
+  },
 })
+
+export default class extends Component {
+  renderPro(item, i) {
+    return (
+      <View style={styles.proWrap} key={i}>
+        <Image source={{ uri: item.logourl }}
+          style={styles.img}
+        />
+      </View>
+    )
+  }
+
+  render() {
+    return (
+      <View style={styles.wrapper}>
+        {
+          this.props.item.list.productList.map(this.renderPro.bind(this))
+        }
+      </View>
+    )
+  }
+}

@@ -12,51 +12,6 @@ import {
 } from 'react-native'
 import { color as styleColor } from '../../styleVar'
 
-export default class extends Component {
-  render() {
-    return (
-      <View>
-        <View style={styles.top}>
-          <View style={styles.topLeft}>
-            <Image source={{ uri: this.props.item.list[0].logourl3 }}
-                   style={styles.topLeftImg}/>
-          </View>
-          <View style={styles.topRight}>
-            <View style={[styles.topRightImg1]}>
-              <Image source={{ uri: this.props.item.list[1].logourl3 }}
-                     style={[styles.topRightImg]}/>
-            </View>
-            <Image source={{ uri: this.props.item.list[2].logourl3 }}
-                   style={styles.topRightImg}/>
-          </View>
-        </View>
-        <View style={styles.bottom}>
-          <View style={styles.bottomImgWrap}>
-            <Image source={{ uri: this.props.item.list[3].logourl3 }}
-                   style={styles.bottomImg}/>
-          </View>
-          <View style={styles.bottomImgWrap}>
-            <Image source={{ uri: this.props.item.list[4].logourl3 }}
-                   style={styles.bottomImg}/>
-          </View>
-          <View style={styles.bottomImgWrap}>
-            <Image source={{ uri: this.props.item.list[5].logourl3 }}
-                   style={styles.bottomImg}/>
-          </View>
-          <View style={styles.bottomImgWrap}>
-            <Image source={{ uri: this.props.item.list[6].logourl3 }}
-                   style={styles.bottomImg}/>
-          </View>
-          <View style={styles.bottomImgWrap}>
-            <Image source={{ uri: this.props.item.list[7].logourl3 }}
-                   style={styles.bottomImg}/>
-          </View>
-        </View>
-      </View>
-    )
-  }
-}
-
 const width = Dimensions.get('window').width
 const borderWidth = 1 / PixelRatio.get()
 const styles = StyleSheet.create({
@@ -69,7 +24,7 @@ const styles = StyleSheet.create({
     width: width * 2 / 5,
     height: width * 2 / 5,
     borderRightWidth: borderWidth,
-    borderColor: styleColor.C8
+    borderColor: styleColor.C8,
   },
   topLeftImg: {
     width: width * 2 / 5 - 1,
@@ -106,3 +61,56 @@ const styles = StyleSheet.create({
     height: width * 1 / 5 - 20,
   },
 })
+export default class extends Component {
+  render() {
+    return (
+      <View>
+        <View style={styles.top}>
+          <View style={styles.topLeft}>
+            <Image source={{ uri: this.props.item.list[0].logourl3 }}
+                   style={styles.topLeftImg}
+            />
+          </View>
+          <View style={styles.topRight}>
+            <View style={[styles.topRightImg1]}>
+              <Image source={{ uri: this.props.item.list[1].logourl3 }}
+                     style={[styles.topRightImg]}
+              />
+            </View>
+            <Image source={{ uri: this.props.item.list[2].logourl3 }}
+                   style={styles.topRightImg}
+            />
+          </View>
+        </View>
+        <View style={styles.bottom}>
+          <View style={styles.bottomImgWrap}>
+            <Image source={{ uri: this.props.item.list[3].logourl3 }}
+                   style={styles.bottomImg}
+            />
+          </View>
+          <View style={styles.bottomImgWrap}>
+            <Image source={{ uri: this.props.item.list[4].logourl3 }}
+                   style={styles.bottomImg}
+            />
+          </View>
+          <View style={styles.bottomImgWrap}>
+            <Image source={{ uri: this.props.item.list[5].logourl3 }}
+                   style={styles.bottomImg}
+            />
+          </View>
+          <View style={styles.bottomImgWrap}>
+            <Image source={{ uri: this.props.item.list[6].logourl3 }}
+                   style={styles.bottomImg}
+            />
+          </View>
+          <View style={styles.bottomImgWrap}>
+            <Image source={{ uri: this.props.item.list[7].logourl3 }}
+                   style={styles.bottomImg}
+            />
+          </View>
+        </View>
+      </View>
+    )
+  }
+}
+

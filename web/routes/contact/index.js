@@ -7,10 +7,10 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React from 'react';
-import Contact from './Contact';
+import React from 'react'
+import Contact from './Contact'
 
-const title = 'Contact Us';
+const title = 'Contact Us'
 
 export default {
 
@@ -20,7 +20,7 @@ export default {
     return {
       title,
       component: <Contact title={title} />,
-    };
+    }
   },
 
-};
+}

@@ -7,8 +7,8 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { PropTypes } from 'react';
-import { analytics } from '../config';
+import React, { PropTypes } from 'react'
+import { analytics } from '../config'
 
 function Html({ title, description, style, script, children }) {
   return (
@@ -37,7 +37,7 @@ function Html({ title, description, style, script, children }) {
         }
       </body>
     </html>
-  );
+  )
 }
 
 Html.propTypes = {
@@ -46,6 +46,6 @@ Html.propTypes = {
   style: PropTypes.string,
   script: PropTypes.string,
   children: PropTypes.string,
-};
+}
 
-export default Html;
+export default Html

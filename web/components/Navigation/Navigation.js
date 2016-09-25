@@ -7,11 +7,11 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { PropTypes } from 'react';
-import cx from 'classnames';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Navigation.css';
-import Link from '../Link';
+import React, { PropTypes } from 'react'
+import cx from 'classnames'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
+import s from './Navigation.css'
+import Link from '../Link'
 
 function Navigation({ className }) {
   return (
@@ -23,11 +23,11 @@ function Navigation({ className }) {
       <span className={s.spacer}>or</span>
       <Link className={cx(s.link, s.highlight)} to="/register">Sign up</Link>
     </div>
-  );
+  )
 }
 
 Navigation.propTypes = {
   className: PropTypes.string,
-};
+}
 
-export default withStyles(s)(Navigation);
+export default withStyles(s)(Navigation)

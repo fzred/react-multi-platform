@@ -7,10 +7,10 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React from 'react';
-import Login from './Login';
+import React from 'react'
+import Login from './Login'
 
-const title = 'Log In';
+const title = 'Log In'
 
 export default {
 
@@ -20,7 +20,7 @@ export default {
     return {
       title,
       component: <Login title={title} />,
-    };
+    }
   },
 
-};
+}

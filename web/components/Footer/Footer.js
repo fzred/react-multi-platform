@@ -7,10 +7,10 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Footer.css';
-import Link from '../Link';
+import React from 'react'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
+import s from './Footer.css'
+import Link from '../Link'
 
 function Footer() {
   return (
@@ -25,7 +25,7 @@ function Footer() {
         <Link className={s.link} to="/not-found">Not Found</Link>
       </div>
     </div>
-  );
+  )
 }
 
-export default withStyles(s)(Footer);
+export default withStyles(s)(Footer)
