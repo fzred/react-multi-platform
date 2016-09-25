@@ -69,7 +69,7 @@ const config = {
         test: /\.jsx?$/,
         include: [
           path.resolve(__dirname, '../node_modules/react-routing/src'),
-          path.resolve(__dirname, '../src'),
+          path.resolve(__dirname, '../web'),
         ],
         loader: 'babel-loader',
       }, {
@@ -113,7 +113,7 @@ const config = {
 // -----------------------------------------------------------------------------
 
 const clientConfig = extend(true, {}, config, {
-  entry: './src/client.js',
+  entry: './web/client.js',
   output: {
     path: path.join(__dirname, '../build/public'),
     filename: DEBUG ? '[name].js?[hash]' : '[name].[hash].js',
@@ -151,7 +151,7 @@ const clientConfig = extend(true, {}, config, {
 // -----------------------------------------------------------------------------
 
 const serverConfig = extend(true, {}, config, {
-  entry: './src/server.js',
+  entry: './web/server.js',
   output: {
     path: './build',
     filename: 'server.js',

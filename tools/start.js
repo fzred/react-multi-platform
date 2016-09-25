@@ -105,7 +105,6 @@ async function start() {
     };
 
     bundler.plugin('done', () => {
-      console.log('done')
       return handleServerBundleComplete()
     });
   });
