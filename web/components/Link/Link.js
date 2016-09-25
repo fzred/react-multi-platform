@@ -7,15 +7,15 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { Component, PropTypes } from 'react';
-import Location from '../../core/Location';
+import React, { Component, PropTypes } from 'react'
+import Location from '../../core/Location'
 
 function isLeftClickEvent(event) {
-  return event.button === 0;
+  return event.button === 0
 }
 
 function isModifiedEvent(event) {
-  return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
+  return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey)
 }
 
 class Link extends Component {
@@ -26,38 +26,38 @@ class Link extends Component {
   };
 
   handleClick = (event) => {
-    let allowTransition = true;
-    let clickResult;
+    let allowTransition = true
+    let clickResult
 
     if (this.props && this.props.onClick) {
-      clickResult = this.props.onClick(event);
+      clickResult = this.props.onClick(event)
     }
 
     if (isModifiedEvent(event) || !isLeftClickEvent(event)) {
-      return;
+      return
     }
 
     if (clickResult === false || event.defaultPrevented === true) {
-      allowTransition = false;
+      allowTransition = false
     }
 
-    event.preventDefault();
+    event.preventDefault()
 
     if (allowTransition) {
-      const link = event.currentTarget;
+      const link = event.currentTarget
       if (this.props && this.props.to) {
-        Location.push(this.props.to);
+        Location.push(this.props.to)
       } else {
-        Location.push({ pathname: link.pathname, search: link.search });
+        Location.push({ pathname: link.pathname, search: link.search })
       }
     }
   };
 
   render() {
-    const { to, ...props } = this.props; // eslint-disable-line no-use-before-define
-    return <a href={Location.createHref(to)} {...props} onClick={this.handleClick} />;
+    const { to, ...props } = this.props // eslint-disable-line no-use-before-define
+    return <a href={Location.createHref(to)} {...props} onClick={this.handleClick} />
   }
 
 }
 
-export default Link;
+export default Link

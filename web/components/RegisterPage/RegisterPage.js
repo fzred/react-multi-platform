@@ -7,11 +7,11 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { Component, PropTypes } from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './RegisterPage.scss';
+import React, { Component, PropTypes } from 'react'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
+import s from './RegisterPage.scss'
 
-const title = 'New User Registration';
+const title = 'New User Registration'
 
 class RegisterPage extends Component {
 
@@ -20,7 +20,7 @@ class RegisterPage extends Component {
   };
 
   componentWillMount() {
-    this.context.onSetTitle(title);
+    this.context.onSetTitle(title)
   }
 
   render() {
@@ -31,9 +31,9 @@ class RegisterPage extends Component {
           <p>...</p>
         </div>
       </div>
-    );
+    )
   }
 
 }
 
-export default withStyles(RegisterPage, s);
+export default withStyles(RegisterPage, s)

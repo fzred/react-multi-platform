@@ -7,11 +7,11 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { Component, PropTypes } from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './ContactPage.scss';
+import React, { Component, PropTypes } from 'react'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
+import s from './ContactPage.scss'
 
-const title = 'Contact Us';
+const title = 'Contact Us'
 
 class ContactPage extends Component {
 
@@ -20,7 +20,7 @@ class ContactPage extends Component {
   };
 
   componentWillMount() {
-    this.context.onSetTitle(title);
+    this.context.onSetTitle(title)
   }
 
   render() {
@@ -31,9 +31,9 @@ class ContactPage extends Component {
           <p>...</p>
         </div>
       </div>
-    );
+    )
   }
 
 }
 
-export default withStyles(ContactPage, s);
+export default withStyles(ContactPage, s)

@@ -7,10 +7,10 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { Component } from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Footer.scss';
-import Link from '../Link';
+import React, { Component } from 'react'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
+import s from './Footer.scss'
+import Link from '../Link'
 
 class Footer extends Component {
 
@@ -27,9 +27,9 @@ class Footer extends Component {
           <Link className={s.link} to="/not-found">Not Found</Link>
         </div>
       </div>
-    );
+    )
   }
 
 }
 
-export default withStyles(Footer, s);
+export default withStyles(Footer, s)

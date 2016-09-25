@@ -7,9 +7,9 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { Component } from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Feedback.scss';
+import React, { Component } from 'react'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
+import s from './Feedback.scss'
 
 class Feedback extends Component {
 
@@ -28,9 +28,9 @@ class Feedback extends Component {
           >Report an issue</a>
         </div>
       </div>
-    );
+    )
   }
 
 }
 
-export default withStyles(Feedback, s);
+export default withStyles(Feedback, s)

@@ -7,11 +7,11 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { Component, PropTypes } from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './ErrorPage.scss';
+import React, { Component, PropTypes } from 'react'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
+import s from './ErrorPage.scss'
 
-const title = 'Error';
+const title = 'Error'
 
 class ErrorPage extends Component {
 
@@ -21,7 +21,7 @@ class ErrorPage extends Component {
   };
 
   componentWillMount() {
-    this.context.onSetTitle(title);
+    this.context.onSetTitle(title)
   }
 
   render() {
@@ -30,9 +30,9 @@ class ErrorPage extends Component {
         <h1>{title}</h1>
         <p>Sorry, an critical error occurred on this page.</p>
       </div>
-    );
+    )
   }
 
 }
 
-export default withStyles(ErrorPage, s);
+export default withStyles(ErrorPage, s)
