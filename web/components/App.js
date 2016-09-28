@@ -8,7 +8,11 @@
  */
 
 import React, { PropTypes } from 'react'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import reducer from '../../common/reducers/'
 
+const store = createStore(reducer)
 const ContextType = {
   // Navigation manager, e.g. history.push('/home')
   // https://github.com/mjackson/history
@@ -49,7 +53,11 @@ class App extends React.Component {
   render() {
     // NOTE: If you need to add or modify header, footer etc. of the app,
     // please do that inside the Layout component.
-    return React.Children.only(this.props.children)
+    return (
+      <Provider store={store}>
+        {React.Children.only(this.props.children)}
+      </Provider>
+    )
   }
 
 }

@@ -50,6 +50,7 @@ const config = {
         loader: 'babel-loader',
         include: [
           path.resolve(__dirname, '../web'),
+          path.resolve(__dirname, '../common'),
         ],
         query: {
           // https://github.com/babel/babel-loader#options

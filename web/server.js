@@ -32,7 +32,6 @@ import assets from './assets' // eslint-disable-line import/no-unresolved
 import { port } from './config'
 
 const app = express()
-
 //
 // Tell any CSS tooling (such as Material UI) to use all vendor prefixes if the
 // user agent is not known.
@@ -84,7 +83,7 @@ app.use(bodyParser.json())
 //
 // Register server-side rendering middleware
 // -----------------------------------------------------------------------------
-app.get('*', async (req, res, next) => {
+app.get('*', async(req, res, next) => {
   try {
     const css = new Set()
 
@@ -110,7 +109,11 @@ app.get('*', async (req, res, next) => {
     })
 
     const data = { ...route }
-    data.children = ReactDOM.renderToString(<App context={context}>{route.component}</App>)
+    data.children = ReactDOM.renderToString((
+      <App context={context}>
+        {route.component}
+      </App>
+    ))
     data.style = [...css].join('')
     data.script = assets.main.js
     const html = ReactDOM.renderToStaticMarkup(<Html {...data} />)
