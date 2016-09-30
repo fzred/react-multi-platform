@@ -9,7 +9,7 @@
 
 import React, { PropTypes } from 'react'
 
-function Html({ title, description, style, script, children, scriptHtml }) {
+function Html({ title, description, style, script, children, state }) {
   return (
     <html className="no-js" lang="en">
       <head>
@@ -23,8 +23,13 @@ function Html({ title, description, style, script, children, scriptHtml }) {
       </head>
       <body>
         <div id="app" dangerouslySetInnerHTML={{ __html: children }} />
-        <div dangerouslySetInnerHTML={{ __html: scriptHtml }} />
-        {script && <script src={script} />}
+        {script && (
+          <script
+            id="source"
+            src={script}
+            data-initial-state={JSON.stringify(state)}
+          />
+        )}
       </body>
     </html>
   )
@@ -33,11 +38,10 @@ function Html({ title, description, style, script, children, scriptHtml }) {
 Html.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  store: PropTypes.object.isRequired,
   style: PropTypes.string,
   script: PropTypes.string,
   children: PropTypes.string,
-  scriptHtml: PropTypes.string,
+  state: PropTypes.object.isRequired,
 }
 
 export default Html

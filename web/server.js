@@ -20,7 +20,7 @@ import ReactDOM from 'react-dom/server'
 import UniversalRouter from 'universal-router'
 import createMemoryHistory from 'history/createMemoryHistory'
 import PrettyError from 'pretty-error'
-import App, { store } from './components/App'
+import App from './components/App'
 import Html from './components/Html'
 import { ErrorPageWithoutStyle } from './routes/error/ErrorPage'
 import errorPageStyle from './routes/error/ErrorPage.css'
@@ -30,6 +30,7 @@ import errorPageStyle from './routes/error/ErrorPage.css'
 import routes from './routes'
 import assets from './assets' // eslint-disable-line import/no-unresolved
 import { port } from './config'
+import configureStore from './store/configureStore'
 
 const app = express()
 //
@@ -85,6 +86,10 @@ app.use(bodyParser.json())
 // -----------------------------------------------------------------------------
 app.get('*', async(req, res, next) => {
   try {
+    const store = configureStore({}, {
+      cookie: req.headers.cookie,
+    })
+
     const css = new Set()
 
     // Global (context) variables that can be easily accessed from any React component
@@ -95,6 +100,7 @@ app.get('*', async(req, res, next) => {
       history: createMemoryHistory({
         initialEntries: [req.url],
       }),
+      store,
       // Enables critical path CSS rendering
       // https://github.com/kriasoft/isomorphic-style-loader
       insertCss: (...styles) => {
@@ -115,10 +121,7 @@ app.get('*', async(req, res, next) => {
       </App>
     ))
     data.style = [...css].join('')
-    data.scriptHtml = `<script>
-          window.__INITIAL_STATE__ = ${JSON.stringify(store.getState())}
-          console.log(window.__INITIAL_STATE__)
-        </script>`
+    data.state = store.getState()
     data.script = assets.main.js
     const html = ReactDOM.renderToStaticMarkup(<Html {...data} />)
 

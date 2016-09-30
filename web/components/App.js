@@ -9,10 +9,7 @@
 
 import React, { PropTypes } from 'react'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import reducer from '../../common/reducers/'
 
-export const store = createStore(reducer)
 const ContextType = {
   // Navigation manager, e.g. history.push('/home')
   // https://github.com/mjackson/history
@@ -20,6 +17,7 @@ const ContextType = {
   // Enables critical path CSS rendering
   // https://github.com/kriasoft/isomorphic-style-loader
   insertCss: PropTypes.func.isRequired,
+  store: PropTypes.object.isRequired,
 }
 
 /**
@@ -51,6 +49,7 @@ class App extends React.Component {
   }
 
   render() {
+    const store = this.props.context.store
     // NOTE: If you need to add or modify header, footer etc. of the app,
     // please do that inside the Layout component.
     return (
