@@ -29,6 +29,12 @@ export default {
 //    })
 //    const { data } = await resp.json()
 //    if (!data || !data.news) throw new Error('Failed to load the news feed.')
+    const r = await new Promise(resolve => {
+      setTimeout(() => {
+        resolve(111)
+      }, 50)
+    })
+    console.log('r', r)
     return {
       title: 'React Starter Kit',
       component: <Home />,
