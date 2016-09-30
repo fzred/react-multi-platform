@@ -20,7 +20,7 @@ import ReactDOM from 'react-dom/server'
 import UniversalRouter from 'universal-router'
 import createMemoryHistory from 'history/createMemoryHistory'
 import PrettyError from 'pretty-error'
-import App from './components/App'
+import App, { store } from './components/App'
 import Html from './components/Html'
 import { ErrorPageWithoutStyle } from './routes/error/ErrorPage'
 import errorPageStyle from './routes/error/ErrorPage.css'
@@ -115,6 +115,10 @@ app.get('*', async(req, res, next) => {
       </App>
     ))
     data.style = [...css].join('')
+    data.scriptHtml = `<script>
+          window.__INITIAL_STATE__ = ${JSON.stringify(store.getState())}
+          console.log(window.__INITIAL_STATE__)
+        </script>`
     data.script = assets.main.js
     const html = ReactDOM.renderToStaticMarkup(<Html {...data} />)
 

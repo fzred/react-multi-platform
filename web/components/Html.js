@@ -8,9 +8,8 @@
  */
 
 import React, { PropTypes } from 'react'
-import { analytics } from '../config'
 
-function Html({ title, description, style, script, children }) {
+function Html({ title, description, style, script, children, scriptHtml }) {
   return (
     <html className="no-js" lang="en">
       <head>
@@ -24,17 +23,8 @@ function Html({ title, description, style, script, children }) {
       </head>
       <body>
         <div id="app" dangerouslySetInnerHTML={{ __html: children }} />
+        <div dangerouslySetInnerHTML={{ __html: scriptHtml }} />
         {script && <script src={script} />}
-        {analytics.google.trackingId &&
-          <script
-            dangerouslySetInnerHTML={{ __html:
-            'window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;' +
-            `ga('create','${analytics.google.trackingId}','auto');ga('send','pageview')` }}
-          />
-        }
-        {analytics.google.trackingId &&
-          <script src="https://www.google-analytics.com/analytics.js" async defer />
-        }
       </body>
     </html>
   )
@@ -43,9 +33,11 @@ function Html({ title, description, style, script, children }) {
 Html.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  store: PropTypes.object.isRequired,
   style: PropTypes.string,
   script: PropTypes.string,
   children: PropTypes.string,
+  scriptHtml: PropTypes.string,
 }
 
 export default Html

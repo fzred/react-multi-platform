@@ -12,7 +12,7 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import reducer from '../../common/reducers/'
 
-const store = createStore(reducer)
+export const store = createStore(reducer)
 const ContextType = {
   // Navigation manager, e.g. history.push('/home')
   // https://github.com/mjackson/history
