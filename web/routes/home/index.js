@@ -10,10 +10,13 @@
 import React from 'react'
 import Home from './Home'
 import fetch from '../../core/fetch'
+import { fetchTest } from '../../../common/actions'
 
 export default {
 
   path: '/',
+
+  store: null,
 
   async action() {
 //    const resp = await fetch('/graphql', {
@@ -29,12 +32,16 @@ export default {
 //    })
 //    const { data } = await resp.json()
 //    if (!data || !data.news) throw new Error('Failed to load the news feed.')
-    const r = await new Promise(resolve => {
-      setTimeout(() => {
-        resolve(111)
-      }, 50)
-    })
-    console.log('r', r)
+//    const r = await new Promise(resolve => {
+//      setTimeout(() => {
+//        resolve(111)
+//      }, 0)
+//    })
+//    console.log('r', r)
+
+    if(this.store){
+      
+    }
     return {
       title: 'React Starter Kit',
       component: <Home />,

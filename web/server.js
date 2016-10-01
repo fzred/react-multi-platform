@@ -28,6 +28,7 @@ import errorPageStyle from './routes/error/ErrorPage.css'
 // import models from './data/models'
 // import schema from './data/schema'
 import routes from './routes'
+import injectStore from './routes/injectStore'
 import assets from './assets' // eslint-disable-line import/no-unresolved
 import { port } from './config'
 import configureStore from './store/configureStore'
@@ -108,7 +109,7 @@ app.get('*', async(req, res, next) => {
         styles.forEach(style => css.add(style._getCss()))
       },
     }
-
+    injectStore(routes, store)
     const route = await UniversalRouter.resolve(routes, {
       path: req.path,
       query: req.query,
@@ -147,7 +148,7 @@ app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
       description={err.message}
       style={errorPageStyle._getCss()} // eslint-disable-line no-underscore-dangle
     >
-      {ReactDOM.renderToString(<ErrorPageWithoutStyle error={err} />)}
+    {ReactDOM.renderToString(<ErrorPageWithoutStyle error={err} />)}
     </Html>
   )
   res.status(err.status || 500)
