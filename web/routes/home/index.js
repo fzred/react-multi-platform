@@ -39,8 +39,10 @@ export default {
 //    })
 //    console.log('r', r)
 
-    if(this.store){
-      
+    if (this.store) {
+      console.log('this.store.dispatch 1')
+      await this.store.dispatch(fetchTest())
+      console.log('this.store.dispatch 2')
     }
     return {
       title: 'React Starter Kit',

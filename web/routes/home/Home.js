@@ -19,6 +19,7 @@ class Home extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     homeList: PropTypes.arrayOf(PropTypes.shape({})),
+    testAsync: PropTypes.array,
   }
 
   componentDidMount() {
@@ -31,7 +32,7 @@ class Home extends Component {
 
 
   render() {
-    const { homeList } = this.props
+    const { homeList, testAsync } = this.props
     return (
       <Layout>
         <div className={s.root}>
@@ -42,7 +43,8 @@ class Home extends Component {
               <li>12312</li>
             </ul>
             <div>
-              {JSON.stringify(homeList)}
+              {JSON.stringify(homeList)}<br />
+              {JSON.stringify(testAsync)}
               <form>
                 <button type="submit">
                   Add Todo
@@ -59,4 +61,5 @@ class Home extends Component {
 
 export default connect(state => ({
   homeList: state.home,
+  testAsync: state.testAsync,
 }))(withStyles(s)(Home))
