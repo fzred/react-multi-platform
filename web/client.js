@@ -17,6 +17,7 @@ import createBrowserHistory from 'history/createBrowserHistory'
 import { createPath } from 'history/PathUtils'
 import configureStore from './store/configureStore'
 import App from './components/App'
+import injectStore from './routes/injectStore'
 
 const initialState = JSON.parse(
   document
@@ -150,6 +151,7 @@ async function onLocationChange(location) {
   currentLocation = location
 
   try {
+    injectStore(routes, store)
     const route = await UniversalRouter.resolve(routes, {
       path: location.pathname,
       query: queryString.parse(location.search),
