@@ -12,24 +12,19 @@ import path from 'path'
 import express from 'express'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
-// import expressJwt from 'express-jwt'
-// import expressGraphQL from 'express-graphql'
-// import jwt from 'jsonwebtoken'
 import React from 'react'
 import ReactDOM from 'react-dom/server'
 import UniversalRouter from 'universal-router'
 import createMemoryHistory from 'history/createMemoryHistory'
 import PrettyError from 'pretty-error'
+import httpProxy from 'http-proxy'
 import App from './components/App'
 import Html from './components/Html'
 import { ErrorPageWithoutStyle } from './routes/error/ErrorPage'
 import errorPageStyle from './routes/error/ErrorPage.css'
-// import passport from './core/passport'
-// import models from './data/models'
-// import schema from './data/schema'
 import routes from './routes'
 import assets from './assets' // eslint-disable-line import/no-unresolved
-import { port } from './config'
+import { port, proxyUrl } from './config'
 import configureStore from './store/configureStore'
 
 const app = express()
@@ -49,37 +44,26 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 //
-// Authentication
+// AIP 代理
 // -----------------------------------------------------------------------------
-// app.use(expressJwt({
-//  secret: auth.jwt.secret,
-//  credentialsRequired: false,
-//  getToken: req => req.cookies.id_token,
-// }))
-// app.use(passport.initialize())
-//
-// app.get('/login/facebook',
-//  passport.authenticate('facebook', { scope: ['email', 'user_location'], session: false })
-// )
-// app.get('/login/facebook/return',
-//  passport.authenticate('facebook', { failureRedirect: '/login', session: false }),
-//  (req, res) => {
-//    const expiresIn = 60 * 60 * 24 * 180 // 180 days
-//    const token = jwt.sign(req.user, auth.jwt.secret, { expiresIn })
-//    res.cookie('id_token', token, { maxAge: 1000 * expiresIn, httpOnly: true })
-//    res.redirect('/')
-//  }
-// )
+const proxy = httpProxy.createProxyServer({
+  target: proxyUrl,
+  changeOrigin: true,
+})
 
-//
-// Register API middleware
-// -----------------------------------------------------------------------------
-// app.use('/graphql', expressGraphQL(req => ({
-//  schema,
-//  graphiql: true,
-//  rootValue: { request: req },
-//  pretty: process.env.NODE_ENV !== 'production',
-// })))
+proxy.on('error', (err, req, res) => {
+//  res.writeHead(500, {
+//    'Content-Type': 'text/plain',
+//  })
+  res.send({
+    obj: null,
+    errCode: 1,
+    errMsg: err.toString(),
+  })
+})
+app.all(/(\/api\/.*)|(\/b2c-\/.*)/, (req, res) => {
+  proxy.web(req, res)
+})
 
 //
 // Register server-side rendering middleware
@@ -161,9 +145,4 @@ app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
 app.listen(port, () => {
   console.log(`The server is running at http://localhost:${port}/`)
 })
-// models.sync().catch(err => console.error(err.stack)).then(() => {
-//  app.listen(port, () => {
-//    console.log(`The server is running at http://localhost:${port}/`)
-//  })
-// })
 /* eslint-enable no-console */

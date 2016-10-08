@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/react-multi-platform.iml" filepath="$PROJECT_DIR$/.idea/react-multi-platform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/react-multi-platform.iml" filepath="$PROJECT_DIR$/.idea/react-multi-platform.iml" />
     </modules>
   </component>
 </project>
