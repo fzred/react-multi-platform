@@ -7,14 +7,14 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
 
 function isLeftClickEvent(event) {
-  return event.button === 0;
+  return event.button === 0
 }
 
 function isModifiedEvent(event) {
-  return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
+  return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey)
 }
 
 class Link extends Component {
@@ -31,26 +31,26 @@ class Link extends Component {
 
   handleClick = (event) => {
     if (this.props.onClick) {
-      this.props.onClick(event);
+      this.props.onClick(event)
     }
 
     if (isModifiedEvent(event) || !isLeftClickEvent(event)) {
-      return;
+      return
     }
 
     if (event.defaultPrevented === true) {
-      return;
+      return
     }
 
-    event.preventDefault();
-    this.context.history.push(this.props.to);
+    event.preventDefault()
+    this.context.history.push(this.props.to)
   };
 
   render() {
-    const { to, children, ...props } = this.props;
-    return <a href={to} {...props} onClick={this.handleClick}>{children}</a>;
+    const { to, children, ...props } = this.props
+    return <a href={to} {...props} onClick={this.handleClick}>{children}</a>
   }
 
 }
 
-export default Link;
+export default Link
