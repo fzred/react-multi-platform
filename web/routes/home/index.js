@@ -10,7 +10,7 @@
 import React from 'react'
 import Home from './Home'
 import fetch from '../../core/fetch'
-import { fetchTest } from '../../../common/actions'
+import { fetchTest, fetchHomeHeadPageData } from '../../../common/actions'
 
 export default {
 
@@ -39,11 +39,10 @@ export default {
 //    })
 //    console.log('r', r)
 
-    if (this.store) {
-      console.log('this.store.dispatch 1')
-      await this.store.dispatch(fetchTest())
-      console.log('this.store.dispatch 2')
-    }
+    console.log('this.store.dispatch 1')
+    // await this.store.dispatch(fetchTest())
+    await this.store.dispatch(fetchHomeHeadPageData())
+    console.log('this.store.dispatch 2')
     return {
       title: 'React Starter Kit',
       component: <Home />,

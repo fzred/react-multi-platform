@@ -27,7 +27,9 @@ import injectStore from './routes/injectStore'
 import assets from './assets' // eslint-disable-line import/no-unresolved
 import { port, proxyUrl } from './config'
 import configureStore from './store/configureStore'
+import fetch from './core/fetch'
 
+global.fetch = fetch
 const app = express()
 //
 // Tell any CSS tooling (such as Material UI) to use all vendor prefixes if the

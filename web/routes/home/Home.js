@@ -24,9 +24,9 @@ class Home extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props
-    setTimeout(() => {
-      dispatch(getHomeModule())
-    }, 1000)
+    // setTimeout(() => {
+    //   dispatch(getHomeModule())
+    // }, 1000)
     // dispatch to get initial state
   }
 

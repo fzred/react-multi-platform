@@ -18,7 +18,9 @@ import { createPath } from 'history/PathUtils'
 import configureStore from './store/configureStore'
 import App from './components/App'
 import injectStore from './routes/injectStore'
+import fetch from './core/fetch'
 
+window.fetch = fetch
 const initialState = JSON.parse(
   document
     .getElementById('source')
@@ -36,7 +38,9 @@ const context = {
   insertCss: (...styles) => {
     // eslint-disable-next-line no-underscore-dangle
     const removeCss = styles.map(x => x._insertCss())
-    return () => { removeCss.forEach(f => f()) }
+    return () => {
+      removeCss.forEach(f => f())
+    }
   },
   store,
 }

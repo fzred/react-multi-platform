@@ -19,20 +19,6 @@
     "deploy": "babel-node tools/run deploy",
     "start": "babel-node tools/run start"
   },
-  "babel": {
-    "presets": [
-      "react",
-      "node5",
-      "stage-0"
-    ],
-    "env": {
-      "test": {
-        "plugins": [
-          "rewire"
-        ]
-      }
-    }
-  },
   "dependencies": {
     "babel-polyfill": "6.13.0",
     "babel-runtime": "6.11.6",
