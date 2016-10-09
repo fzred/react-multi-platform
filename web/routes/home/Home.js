@@ -7,57 +7,42 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import Layout from '../../components/Layout'
 import s from './Home.css'
-import { getHomeModule } from '../../../common/actions'
 
-class Home extends Component {
-
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    homeList: PropTypes.arrayOf(PropTypes.shape({})),
-    testAsync: PropTypes.array,
-  }
-
-  componentDidMount() {
-    const { dispatch } = this.props
-    // setTimeout(() => {
-    //   dispatch(getHomeModule())
-    // }, 1000)
-    // dispatch to get initial state
-  }
-
-
-  render() {
-    const { homeList, testAsync } = this.props
-    return (
-      <Layout>
-        <div className={s.root}>
-          <div className={s.container}>
-            <h1 className={s.title}>React.js News</h1>
-            <ul className={s.news}>
-              <li>12312</li>
-              <li>12312</li>
-            </ul>
-            <div>
-              {JSON.stringify(homeList)}<br />
-              {JSON.stringify(testAsync)}
-              <form>
-                <button type="submit">
-                  Add Todo
-                </button>
-              </form>
-            </div>
+function Home({ homeList, testAsync }) {
+  return (
+    <Layout>
+      <div className={s.root}>
+        <div className={s.container}>
+          <h1 className={s.title}>React.js News</h1>
+          <ul className={s.news}>
+            <li>12312</li>
+            <li>12312</li>
+          </ul>
+          <div>
+            {JSON.stringify(homeList)}<br />
+            {JSON.stringify(testAsync)}
+            <form>
+              <button type="submit">
+                Add Todo
+              </button>
+            </form>
           </div>
         </div>
-      </Layout>
-    )
-  }
+      </div>
+    </Layout>
+  )
 }
 
+Home.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  homeList: PropTypes.object,
+  testAsync: PropTypes.array,
+}
 
 export default connect(state => ({
   homeList: state.home,

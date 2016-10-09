@@ -39,10 +39,7 @@ export default {
 //    })
 //    console.log('r', r)
 
-    console.log('this.store.dispatch 1')
-    // await this.store.dispatch(fetchTest())
     await this.store.dispatch(fetchHomeHeadPageData())
-    console.log('this.store.dispatch 2')
     return {
       title: 'React Starter Kit',
       component: <Home />,

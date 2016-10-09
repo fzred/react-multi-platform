@@ -53,7 +53,9 @@ const proxy = httpProxy.createProxyServer({
   target: proxyUrl,
   changeOrigin: true,
 })
-
+proxy.on('proxyReq', (proxyReq, req, res, options) => {
+  proxyReq.setHeader('A-CID', 'MORNING-STAR')
+})
 proxy.on('error', (err, req, res) => {
 //  res.writeHead(500, {
 //    'Content-Type': 'text/plain',
