@@ -1,6 +1,4 @@
-export default function () {
-  const win = window
-  const lib = {}
+(function (win, lib) {
   const doc = win.document
   const docEl = doc.documentElement
   let metaEl = doc.querySelector('meta[name="viewport"]')
@@ -11,10 +9,11 @@ export default function () {
   const flexible = lib.flexible || (lib.flexible = {})
 
   if (metaEl) {
+    console.warn('将根据已有的meta标签来设置缩放比例')
     const match = metaEl.getAttribute('content').match(/initial\-scale=([\d\.]+)/)
     if (match) {
       scale = parseFloat(match[1])
-      dpr = parseInt(1 / scale, 10)
+      dpr = parseInt(1 / scale)
     }
   } else if (flexibleEl) {
     const content = flexibleEl.getAttribute('content')
@@ -33,7 +32,7 @@ export default function () {
   }
 
   if (!dpr && !scale) {
-    // const isAndroid = win.navigator.appVersion.match(/android/gi)
+    const isAndroid = win.navigator.appVersion.match(/android/gi)
     const isIPhone = win.navigator.appVersion.match(/iphone/gi)
     const devicePixelRatio = win.devicePixelRatio
     if (isIPhone) {
@@ -68,16 +67,11 @@ export default function () {
 
   function refreshRem() {
     let width = docEl.getBoundingClientRect().width
-    if (width / dpr > 750) {
-      width = 750 * dpr
+    if (width / dpr > 540) {
+      width = 540 * dpr
     }
-    let rem = width / 10
+    const rem = width / 10
     docEl.style.fontSize = `${rem}px`
-    const realitySize = parseInt(window.getComputedStyle(document.documentElement).fontSize, 10)
-    if (rem !== realitySize) {
-      rem = rem * rem / realitySize
-      docEl.style.fontSize = `${rem}px`
-    }
     flexible.rem = win.rem = rem
   }
 
@@ -91,11 +85,12 @@ export default function () {
       tid = setTimeout(refreshRem, 300)
     }
   }, false)
+  doc.body.style.fontSize = `${12 * dpr}px`
 
   if (doc.readyState === 'complete') {
     doc.body.style.fontSize = `${12 * dpr}px`
   } else {
-    doc.addEventListener('DOMContentLoaded', () => {
+    doc.addEventListener('DOMContentLoaded', (e) => {
       doc.body.style.fontSize = `${12 * dpr}px`
     }, false)
   }
@@ -105,18 +100,18 @@ export default function () {
 
   flexible.dpr = win.dpr = dpr
   flexible.refreshRem = refreshRem
-  flexible.rem2px = d => {
+  flexible.rem2px = function (d) {
     let val = parseFloat(d) * this.rem
     if (typeof d === 'string' && d.match(/rem$/)) {
       val += 'px'
     }
     return val
   }
-  flexible.px2rem = d => {
+  flexible.px2rem = function (d) {
     let val = parseFloat(d) / this.rem
     if (typeof d === 'string' && d.match(/px$/)) {
       val += 'rem'
     }
     return val
   }
-}
+})(window, window.lib || (window.lib = {}))
