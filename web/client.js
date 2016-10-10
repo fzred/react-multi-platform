@@ -19,9 +19,7 @@ import configureStore from './store/configureStore'
 import App from './components/App'
 import injectStore from './routes/injectStore'
 import fetch from './core/fetch'
-import flexible from './common/flexible'
 
-flexible()
 window.fetch = fetch
 const initialState = JSON.parse(
   document

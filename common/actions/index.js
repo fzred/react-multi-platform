@@ -16,14 +16,16 @@ export function getHomeModule() {
     type: 'GET_HOME_MODULE',
   }
 }
+
 export function getHomeModule1() {
   return {
     type: 'GET_HOME_MODULE',
   }
 }
+
 export function fetchTest() {
-  return dispatch => {
-    return new Promise(resolve => {
+  return dispatch => (
+    new Promise(resolve => {
       setTimeout(() => {
         // Yay! Can invoke sync or async actions with `dispatch`
         dispatch({
@@ -33,5 +35,5 @@ export function fetchTest() {
         resolve()
       }, 1000)
     })
-  }
+  )
 }
