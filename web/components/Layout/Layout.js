@@ -10,23 +10,25 @@
 import React, { PropTypes } from 'react'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import s from './Layout.css'
-import Header from '../Header'
-import Feedback from '../Feedback'
-import Footer from '../Footer'
 
-function Layout({ children }) {
+function Layout({ children, layer }) {
+  let layerHtml
+  if (layer) {
+    layerHtml = React.Children.only(layer)
+  }
   return (
-    <div>
-      <Header />
-      {React.Children.only(children)}
-      <Feedback />
-      <Footer />
+    <div className={s.scrollWrap}>
+      <div className={s.scroll}>
+        {React.Children.only(children)}
+      </div>
+      {layerHtml}
     </div>
   )
 }
 
 Layout.propTypes = {
   children: PropTypes.element.isRequired,
+  layer: PropTypes.element,
 }
 
 export default withStyles(s)(Layout)

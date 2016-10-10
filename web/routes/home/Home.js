@@ -11,30 +11,44 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import Layout from '../../components/Layout'
+import BannerList from './components/BannerList'
+
 import s from './Home.css'
 
-function Home({ homeList, testAsync }) {
+function renderMudule(item, i) {
+  switch (item.styleCode) {
+    case 'banner_list':
+      return <BannerList key={i} item={item} />
+    default:
+      return null
+  }
+}
+
+function Home({ homeList }) {
   return (
     <Layout>
-      <div className={s.root}>
-        <div className={s.container}>
-          <h1 className={s.title}>React.js News</h1>
-          <ul className={s.news}>
-            <li>12312</li>
-            <li>12312</li>
-          </ul>
-          <div>
-            {JSON.stringify(homeList)}<br />
-            {JSON.stringify(testAsync)}
-            <form>
-              <button type="submit">
-                Add Todo
-              </button>
-            </form>
-          </div>
-        </div>
+      <div>
+        {homeList.list.map(renderMudule)}
+        <br />{JSON.stringify(homeList)}
       </div>
-    </Layout>
+      {/*<BannerList item={{ a: 1 }} />*/}
+      {/*<div className={s.root}>*/}
+      {/*<div className={s.container}>*/}
+      {/*<h1 className={s.title}>React.js News</h1>*/}
+      {/*<ul className={s.news}>*/}
+      {/*<li>12312</li>*/}
+      {/*<li>12312</li>*/}
+      {/*</ul>*/}
+      {/*<div>*/}
+      {/*{JSON.stringify(testAsync)}*/}
+      {/*<form>*/}
+      {/*<button type="submit">*/}
+      {/*Add Todo*/}
+      {/*</button>*/}
+      {/*</form>*/}
+      {/*</div>*/}
+      {/*</div>*/}
+    </ Layout>
   )
 }
 

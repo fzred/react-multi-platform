@@ -1,0 +1,9 @@
+@import './reset.css';
+
+:global(.flex) {
+  display: flex !important;
+  align-items: center;
+  > * {
+    display: block;
+  }
+}
