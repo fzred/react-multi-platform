@@ -12,6 +12,7 @@ import { connect } from 'react-redux'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import Layout from '../../components/Layout'
 import BannerList from './components/BannerList'
+import HorizontalTwoAct from './components/HorizontalTwoAct'
 
 import s from './Home.css'
 
@@ -19,6 +20,8 @@ function renderMudule(item, i) {
   switch (item.styleCode) {
     case 'banner_list':
       return <BannerList key={i} item={item} />
+    case 'horizontal_two_act':
+      return <HorizontalTwoAct key={i} item={item} />
     default:
       return null
   }
