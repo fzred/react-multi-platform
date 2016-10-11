@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
-import ReactSwipe from 'react-swipe'
 import s from './index.css'
+import Swipe from '../../../../components/Swipe'
 
 function BannerList({ item }) {
   return (
     <div className={s.bannerWrap}>
-      <ReactSwipe
-        swipeOptions={{}}
+      <Swipe
+        swipeOptions={{ auto: 3000 }}
       >
         {
           item.list.map((img, i) => (
@@ -16,7 +16,7 @@ function BannerList({ item }) {
             </a>
           ))
         }
-      </ReactSwipe>
+      </Swipe>
     </div>
   )
 }
