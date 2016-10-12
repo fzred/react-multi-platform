@@ -32,7 +32,6 @@ class Swipe extends Component {
     style: {
       container: {
         overflow: 'hidden',
-        visibility: 'hidden',
         position: 'relative',
       },
 

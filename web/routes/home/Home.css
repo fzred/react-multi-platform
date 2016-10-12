@@ -9,8 +9,7 @@
 @import '../../css/vars.css';
 
 .root {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-bottom: 120px;
 }
 
 .container {

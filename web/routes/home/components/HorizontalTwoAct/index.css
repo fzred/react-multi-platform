@@ -1,0 +1,9 @@
+.root {
+  > * {
+    flex: 1;
+    img {
+      width: 375px;
+      height: 375px;
+    }
+  }
+}

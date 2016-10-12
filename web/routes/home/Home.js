@@ -13,6 +13,8 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import Layout from '../../components/Layout'
 import BannerList from './components/BannerList'
 import HorizontalTwoAct from './components/HorizontalTwoAct'
+import ProductListRows from './components/ProductListRows'
+import FootNav from '../../components/FootNav'
 
 import s from './Home.css'
 
@@ -22,35 +24,24 @@ function renderMudule(item, i) {
       return <BannerList key={i} item={item} />
     case 'horizontal_two_act':
       return <HorizontalTwoAct key={i} item={item} />
+    case 'product_list_rows':
+      return <ProductListRows key={i} item={item} />
     default:
       return null
   }
 }
 
 function Home({ homeList }) {
+  const footHtml = (
+    <div>
+      <FootNav active="home" />
+    </div>
+  )
   return (
-    <Layout>
-      <div>
+    <Layout layer={footHtml}>
+      <div className={s.root}>
         {homeList.list.map(renderMudule)}
-        <br />{JSON.stringify(homeList)}
       </div>
-      {/*<BannerList item={{ a: 1 }} />*/}
-      {/*<div className={s.root}>*/}
-      {/*<div className={s.container}>*/}
-      {/*<h1 className={s.title}>React.js News</h1>*/}
-      {/*<ul className={s.news}>*/}
-      {/*<li>12312</li>*/}
-      {/*<li>12312</li>*/}
-      {/*</ul>*/}
-      {/*<div>*/}
-      {/*{JSON.stringify(testAsync)}*/}
-      {/*<form>*/}
-      {/*<button type="submit">*/}
-      {/*Add Todo*/}
-      {/*</button>*/}
-      {/*</form>*/}
-      {/*</div>*/}
-      {/*</div>*/}
     </ Layout>
   )
 }
