@@ -33,8 +33,7 @@ export function fetchHomeHeadPageData() {
         data.list.map(item => {
           if (item.styleCode === 'product_list_rows') {
             return dispatch(getProductList({
-              // activityId: item.list[0].activityId,
-              activityId: '1610071404580334',
+              activityId: item.list[0].activityId,
               startNum: 0,
             }))
           }

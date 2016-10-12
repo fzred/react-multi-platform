@@ -18,7 +18,7 @@ function Layout({ children, layer }) {
   }
   return (
     <div className={s.scrollWrap}>
-      <div className={s.scroll}>
+      <div id="scroll" className={s.scroll}>
         {React.Children.only(children)}
       </div>
       {layerHtml}

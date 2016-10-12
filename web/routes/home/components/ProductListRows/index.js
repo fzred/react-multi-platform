@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import s from './index.css'
 import px2rem from '../../../../common/px2rem'
+import Pager from '../../../../components/Pager'
 import { getProductList } from '../../../../../common/actions'
 
 class ProductListRows extends Component {
@@ -12,24 +13,33 @@ class ProductListRows extends Component {
     productList: PropTypes.object.isRequired,
   }
 
-  // componentDidMount() {
-  //   const { dispatch, item } = this.props
-  //   // const activityId = item.list[0].activityId
-  //   const activityId = '1610071404580334'
-  //   dispatch(getProductList({
-  //     activityId,
-  //     startNum: 0,
-  //   }))
-  // }
+  constructor() {
+    super()
+    this.fetchProList = this.fetchProList.bind(this)
+  }
+
+  fetchProList({ startNum }) {
+    const { dispatch, item } = this.props
+    const activityId = item.list[0].activityId
+    return dispatch(getProductList({
+      activityId,
+      startNum,
+    }))
+  }
 
   render() {
     const { item, productList } = this.props
+    const model = productList[item.list[0].activityId]
     return (
       <div
         className={`flex ${s.root}`}
         style={{ marginBottom: `${px2rem(item.margin)}rem` }}
       >
-        {JSON.stringify(productList)}
+        <Pager onLoad={this.fetchProList} model={model}>
+          <div>
+            {JSON.stringify(model)}
+          </div>
+        </Pager>
       </div>
     )
   }
