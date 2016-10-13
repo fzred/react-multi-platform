@@ -32,7 +32,9 @@ class Pager extends Component {
       startNum: this.props.startNum,
     })
     this.computedModelState()
-    this.loadData()
+    if (!this.props.model) {
+      this.loadData()
+    }
   }
 
   componentDidMount() {
@@ -44,7 +46,6 @@ class Pager extends Component {
     this.elScroll.removeEventListener('scroll', this.onScrollHandle)
   }
 
-
   onScrollHandle() {
     if (window.innerHeight + this.elScroll.scrollTop + 50 >= this.elScroll.scrollHeight) {
       this.loadData()
@@ -54,6 +55,7 @@ class Pager extends Component {
   computedModelState() {
     if (this.props.model) {
       this.setState({
+        // 判断数据 是否已加载完
         noMore: this.props.model.list.length < this.props.model.startNum,
         startNum: this.props.model.startNum,
       })
@@ -61,7 +63,7 @@ class Pager extends Component {
   }
 
   async loadData() {
-    if (this.state.loading || this.state.noMore) { // 加载完了，才请求下一页
+    if (this.state.loading || this.state.noMore) {
       return
     }
     const { onLoad, pageSize } = this.props
@@ -70,7 +72,6 @@ class Pager extends Component {
       loading: true,
     })
     await onLoad({ startNum, pageSize })
-    // 判断数据 是否已加载完
     if (this.props.model) {
       this.computedModelState()
     } else {
