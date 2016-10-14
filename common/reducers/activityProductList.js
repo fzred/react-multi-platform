@@ -1,6 +1,6 @@
 import {
   ACTIVITY_PRODUCT_LIST_SET,
-  ACTIVITY_PRODUCT_LIST_CONNECT,
+  ACTIVITY_PRODUCT_LIST_CONCAT,
 } from '../types'
 
 export default function home(state = {}, action) {
@@ -9,13 +9,13 @@ export default function home(state = {}, action) {
       return Object.assign({}, state, {
         [action.activityId]: action.data,
       })
-    case ACTIVITY_PRODUCT_LIST_CONNECT: {
+    case ACTIVITY_PRODUCT_LIST_CONCAT: {
       const newState = Object.assign({}, state)
       if (newState[action.activityId]) {
         // 已存在，拼接在后面，瀑布式
         const oldData = newState[action.activityId]
         // eslint-disable-next-line no-param-reassign
-        action.data.list = action.data.list.connect(oldData.list)
+        action.data.list = action.data.list.concat(oldData.list)
       }
       newState[action.activityId] = action.data
       return newState

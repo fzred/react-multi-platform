@@ -72,12 +72,14 @@ class Pager extends Component {
       loading: true,
     })
     await onLoad({ startNum, pageSize })
+    this.setState({
+      loading: false,
+    })
     if (this.props.model) {
       this.computedModelState()
     } else {
       this.setState({
         noMore: true,
-        loading: false,
         startNum: 0,
       })
     }

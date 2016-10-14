@@ -9,8 +9,8 @@
 
 import React from 'react'
 import Home from './Home'
-import fetch from '../../core/fetch'
-import { fetchTest, fetchHomeHeadPageData } from '../../../common/actions'
+import dispatchOnce from '../../store/dispatchOnce'
+import { fetchHomeHeadPageData } from '../../../common/actions'
 
 export default {
 
@@ -39,7 +39,12 @@ export default {
 //    })
 //    console.log('r', r)
 
-    await this.store.dispatch(fetchHomeHeadPageData())
+    await dispatchOnce({
+      store: this.store,
+      action: fetchHomeHeadPageData(),
+      key: 'home',
+    })
+
     return {
       title: 'React Starter Kit',
       component: <Home />,
