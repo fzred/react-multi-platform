@@ -25,8 +25,11 @@ export function fetchHomeHeadPageData() {
     fetch('/b2c-marketing/api/activity/getHeadPageData')
       .then(res => res.json())
       .then(({ data }) => {
-        data = data || { list: [] }
-        data.fetchDate = Date.now()
+        if (data) {
+          data.fetchDate = Date.now()
+        } else {
+          data = data || { list: [] }
+        }
         dispatch({
           type: 'GET_HOME_MODULE',
           data,
