@@ -27,7 +27,7 @@ export function fetchHomeHeadPageData() {
           type: 'GET_HOME_MODULE',
           data,
         })
-        return data
+        return data || { list: [] }
       })
       .then(data => (Promise.all(
         data.list.map(item => {
