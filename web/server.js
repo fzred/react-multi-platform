@@ -67,6 +67,7 @@ proxy.on('error', (err, req, res) => {
   })
 })
 app.all(/(\/api\/.*)|(\/b2c-\/.*)/, (req, res) => {
+  console.log(req.cookies)
   proxy.web(req, res)
 })
 
