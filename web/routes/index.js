@@ -1,12 +1,3 @@
-/**
- * React Starter Kit (https://www.reactstarterkit.com/)
- *
- * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 /* eslint-disable global-require */
 
 // The top-level (parent) route
@@ -18,6 +9,7 @@ export default {
   children: [
     require('./home').default,
     require('./search').default,
+    require('./user').default,
     // require('./contact').default,
     // require('./login').default,
     // require('./register').default,
@@ -27,6 +19,18 @@ export default {
     require('./notFound').default,
   ],
 
+  /*
+   全局钩子 action触发时前
+   */
+  async beforeEach({ route, context }) {
+    if (route === this) {
+      return
+    }
+    if (route.isAuth) {
+      context.redirect('/login')
+    }
+  },
+
   async action({ next }) {
     let route
 
@@ -35,9 +39,8 @@ export default {
     do {
       route = await next()
     } while (!route)
-
     // Provide default values for title, description etc.
-    route.title = `${route.title || 'Untitled Page'} - www.reactstarterkit.com`
+    route.title = `${route.title || 'Untitled Page'} - 金字塔`
     route.description = route.description || ''
 
     return route

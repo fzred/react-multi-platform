@@ -9,7 +9,7 @@ export default {
 
   store: null,
 
-  async action() {
+  async action({ store }) {
 //    const resp = await fetch('/graphql', {
 //      method: 'post',
 //      headers: {
@@ -31,14 +31,14 @@ export default {
 //    console.log('r', r)
 
     await dispatchOnce({
-      store: this.store,
+      store,
       action: fetchHomeHeadPageData(),
       key: 'home',
       time: 1000 * 3600,
     })
 
     return {
-      title: 'React Starter Kit',
+      title: '首页',
       component: <Home />,
     }
   },
