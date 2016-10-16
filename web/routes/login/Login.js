@@ -6,6 +6,7 @@ import s from './Login.css'
 import { login } from '../../../common/actions/user'
 import cookie from '../../common/cookie'
 import { SID } from '../../common/vars'
+import { getParamter } from '../../common/utils'
 
 class Login extends Component {
 
@@ -36,8 +37,10 @@ class Login extends Component {
         path: '/',
         expires: 30,
       })
-      this.context.history.replace('/')
-      console.log(code, data, desc)
+      const sourceUrl = getParamter('sourceurl') || '/'
+      this.context.history.replace(sourceUrl)
+    } else {
+      window.alert(desc)
     }
   }
 

@@ -1,7 +1,7 @@
 export function getParamter(name, url = location.href) {
   const r = new RegExp(`(\\?|#|&)${name}=([^&#]*)(&|#|$)`)
   const m = url.match(r)
-  return (!m ? '' : m[2])
+  return (!m ? undefined : decodeURIComponent(m[2]))
 }
 
 export function isWeixin() {

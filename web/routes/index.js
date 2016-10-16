@@ -33,7 +33,9 @@ export default {
       if (!usersInfo) {
         usersInfo = await context.store.dispatch(getUsersInfo())
       }
-      if (!usersInfo) context.redirect('/login')
+      if (!usersInfo) {
+        context.redirect(`/login?sourceurl=${encodeURIComponent(context.path)}`)
+      }
     }
   },
 
