@@ -14,10 +14,10 @@ import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import React from 'react'
 import ReactDOM from 'react-dom/server'
-import UniversalRouter from 'universal-router'
 import createMemoryHistory from 'history/createMemoryHistory'
 import PrettyError from 'pretty-error'
 import httpProxy from 'http-proxy'
+import UniversalRouter from './universalRouter'
 import App from './components/App'
 import Html from './components/Html'
 import { ErrorPageWithoutStyle } from './routes/error/ErrorPage'
@@ -97,10 +97,17 @@ app.get('*', async(req, res, next) => {
         styles.forEach(style => css.add(style._getCss()))
       },
     }
-    injectStore(routes, store)
+    // injectStore(routes, store)
     const route = await UniversalRouter.resolve(routes, {
       path: req.path,
       query: req.query,
+      store,
+      redirect(to) {
+        const error = new Error(`Redirecting to "${to}"...`)
+        error.status = 301
+        error.path = to
+        throw error
+      },
     })
 
     const data = { ...route }
@@ -117,6 +124,10 @@ app.get('*', async(req, res, next) => {
     res.status(route.status || 200)
     res.send(`<!doctype html>${html}`)
   } catch (err) {
+    if (err.status === 301) {
+      res.redirect(err.path || '/')
+      return
+    }
     next(err)
   }
 })

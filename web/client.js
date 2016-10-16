@@ -1,20 +1,11 @@
-/**
- * React Starter Kit (https://www.reactstarterkit.com/)
- *
- * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import FastClick from 'fastclick'
-import UniversalRouter from 'universal-router'
 import queryString from 'query-string'
 import createBrowserHistory from 'history/createBrowserHistory'
 import { createPath } from 'history/PathUtils'
+import UniversalRouter from './universalRouter'
 import configureStore from './store/configureStore'
 import App from './components/App'
 import injectStore from './routes/injectStore'
@@ -155,14 +146,25 @@ async function onLocationChange(location) {
   currentLocation = location
 
   try {
-    injectStore(routes, store)
+    // injectStore(routes, store)
     const route = await UniversalRouter.resolve(routes, {
       path: location.pathname,
       query: queryString.parse(location.search),
+      store,
+      redirect(to) {
+        const error = new Error(`Redirecting to "${to}"...`)
+        error.status = 301
+        error.path = to
+        throw error
+      },
     })
 
     await render(route, location)
   } catch (err) {
+    if (err.status === 301) {
+      context.history.replace(err.path || '/')
+      return
+    }
     if (process.env.NODE_ENV !== 'production') {
       throw err
     }
