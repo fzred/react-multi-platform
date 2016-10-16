@@ -1,3 +1,5 @@
+import { getUsersInfo } from '../../common/actions/user'
+
 /* eslint-disable global-require */
 
 // The top-level (parent) route
@@ -11,7 +13,7 @@ export default {
     require('./search').default,
     require('./user').default,
     // require('./contact').default,
-    // require('./login').default,
+    require('./login').default,
     // require('./register').default,
     //
     // // place new routes before...
@@ -27,7 +29,11 @@ export default {
       return
     }
     if (route.isAuth) {
-      context.redirect('/login')
+      let usersInfo = context.store.getState().usersInfo
+      if (!usersInfo) {
+        usersInfo = await context.store.dispatch(getUsersInfo())
+      }
+      if (!usersInfo) context.redirect('/login')
     }
   },
 
