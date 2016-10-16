@@ -13,6 +13,10 @@ class Login extends Component {
     dispatch: PropTypes.func.isRequired,
   }
 
+  static contextTypes = {
+    history: PropTypes.object.isRequired,
+  }
+
   constructor() {
     super()
     this.submitHandle = this.submitHandle.bind(this)
@@ -32,6 +36,7 @@ class Login extends Component {
         path: '/',
         expires: 30,
       })
+      this.context.history.replace('/')
       console.log(code, data, desc)
     }
   }
