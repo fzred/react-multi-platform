@@ -4,6 +4,8 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import Layout from '../../components/Layout'
 import s from './Login.css'
 import { login } from '../../../common/actions/user'
+import cookie from '../../common/cookie'
+import { SID } from '../../common/vars'
 
 class Login extends Component {
 
@@ -25,7 +27,13 @@ class Login extends Component {
       phone: this.state.phone,
       pwd: this.state.pwd,
     }))
-    console.log(code, data, desc)
+    if (code === 1000) {
+      cookie.set(SID, data.sid, {
+        path: '/',
+        expires: 30,
+      })
+      console.log(code, data, desc)
+    }
   }
 
   submitHandle(e) {

@@ -2,7 +2,9 @@ import { USERS_INFO_SET, USERS_INFO_CLEAR } from '../types'
 
 export function getUsersInfo() {
   return dispatch => (
-    fetch('/b2c-user/api/users/getUsersInfo')
+    fetch('/b2c-user/api/users/getUsersInfo', {
+      credentials: 'include',
+    })
       .then(res => res.json())
       .then(({ data, code }) => {
         if (code === 1000) {
