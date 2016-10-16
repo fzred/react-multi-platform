@@ -33,20 +33,22 @@ function FootNav({ children, active }) {
             activelistActive: active === 'activelist',
           })}
         >活动</a>
-        <a
+        <Link
           className={cx({
             navBtn: true,
             cart: active !== 'cart',
             cartActive: active === 'cart',
           })}
-        >购物车</a>
-        <a
+          to="/cart"
+        >购物车</Link>
+        <Link
           className={cx({
             navBtn: true,
             user: active !== 'user',
             userActive: active === 'user',
           })}
-        >我的</a>
+          to="/user"
+        >我的</Link>
       </nav>
     </div>
   )
