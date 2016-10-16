@@ -18,8 +18,15 @@ async function resolve(routes, pathOrContext) {
       return result
     }
 
+    const newContext = Object.assign({}, context, value)
+    if (root.beforeEach) {
+      await root.beforeEach({
+        route: value.route,
+        context: newContext,
+        params: newContext.params,
+      })
+    }
     if (value.route.action) {
-      const newContext = Object.assign({}, context, value)
       result = await value.route.action(newContext, newContext.params)
     }
 
