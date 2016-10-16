@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import classNames from 'classnames/bind'
+import Link from '../Link'
 import s from './index.css'
 
 const cx = classNames.bind(s)
@@ -9,20 +10,22 @@ function FootNav({ children, active }) {
     <div className={`flex ${s.root}`}>
       {children ? React.Children.only(children) : ''}
       <nav className={`flex ${s.nav}`}>
-        <a
+        <Link
           className={cx({
             navBtn: true,
             home: active !== 'home',
             homeActive: active === 'home',
           })}
-        >首页</a>
-        <a
+          to="/"
+        >首页</Link>
+        <Link
           className={cx({
             navBtn: true,
             search: active !== 'search',
             searchActive: active === 'search',
           })}
-        >分类</a>
+          to="/search"
+        >分类</Link>
         <a
           className={cx({
             navBtn: true,
