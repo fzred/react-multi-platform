@@ -11,17 +11,18 @@ export default function (requestConfig) {
 
   if (request.method === 'GET') {
     const param = queryParams(request.data)
-    if (request.url.indexOf('?') > -1) {
-      request.url += `&${param}`
-    } else {
-      request.url += `?${param}`
+    if (param.length > 0) {
+      if (request.url.indexOf('?') > -1) {
+        request.url += `&${param}`
+      } else {
+        request.url += `?${param}`
+      }
     }
   } else if (options.emulateJSON) {
     request.body = queryParams(request.data)
     request.headers.set('Content-Type', 'application/x-www-form-urlencoded')
   } else {
     request.body = JSON.stringify(request.data)
-    request.headers.set('Content-Type', 'application/json')
   }
 
   return request

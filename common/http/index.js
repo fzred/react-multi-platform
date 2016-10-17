@@ -3,6 +3,8 @@
  */
 import method from './interceptors/method'
 import send from './interceptors/send'
+import before from './interceptors/before'
+import after from './interceptors/after'
 import { when } from './util'
 
 export default class Http {
@@ -16,6 +18,8 @@ export default class Http {
 
   create(requestConfig) {
     const promise = when(requestConfig)
+    when(promise, before)
+
     // 注册请求前拦截器
     for (const value of this.interceptors.request) {
       when(promise, value)
@@ -28,6 +32,8 @@ export default class Http {
     for (const value of this.interceptors.response) {
       when(promise, value)
     }
+
+    when(promise, after)
 
     return promise
   }
