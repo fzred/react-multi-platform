@@ -7,7 +7,7 @@ import before from './interceptors/before'
 import after from './interceptors/after'
 import { when } from './util'
 
-export default class Http {
+export default class Rend {
   constructor() {
     this.interceptors = {
       request: [],

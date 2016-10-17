@@ -8,16 +8,20 @@ import { createPath } from 'history/PathUtils'
 import UniversalRouter from './universalRouter'
 import configureStore from './store/configureStore'
 import App from './components/App'
-import injectStore from './routes/injectStore'
 import fetch from './core/fetch'
+import Rend from '../common/http'
 
+const rend = new Rend()
 window.fetch = fetch
 const initialState = JSON.parse(
   document
     .getElementById('source')
     .getAttribute('data-initial-state')
 )
-const store = configureStore(initialState, { history })
+const store = configureStore(initialState, {
+  history,
+  rend,
+})
 // Global (context) variables that can be easily accessed from any React component
 // https://facebook.github.io/react/docs/context.html
 const context = {
@@ -146,7 +150,6 @@ async function onLocationChange(location) {
   currentLocation = location
 
   try {
-    // injectStore(routes, store)
     const route = await UniversalRouter.resolve(routes, {
       path: location.pathname,
       query: queryString.parse(location.search),

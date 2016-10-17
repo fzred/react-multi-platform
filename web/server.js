@@ -17,13 +17,13 @@ import ReactDOM from 'react-dom/server'
 import createMemoryHistory from 'history/createMemoryHistory'
 import PrettyError from 'pretty-error'
 import httpProxy from 'http-proxy'
+import Rend from '../common/http'
 import UniversalRouter from './universalRouter'
 import App from './components/App'
 import Html from './components/Html'
 import { ErrorPageWithoutStyle } from './routes/error/ErrorPage'
 import errorPageStyle from './routes/error/ErrorPage.css'
 import routes from './routes'
-import injectStore from './routes/injectStore'
 import assets from './assets' // eslint-disable-line import/no-unresolved
 import { port, proxyUrl } from './config'
 import configureStore from './store/configureStore'
@@ -76,8 +76,10 @@ app.all(/(\/api\/.*)|(\/b2c-\/.*)/, (req, res) => {
 // -----------------------------------------------------------------------------
 app.get('*', async(req, res, next) => {
   try {
+    const rend = new Rend()
     const store = configureStore({}, {
       cookie: req.headers.cookie,
+      rend,
     })
 
     const css = new Set()
@@ -98,7 +100,6 @@ app.get('*', async(req, res, next) => {
         styles.forEach(style => css.add(style._getCss()))
       },
     }
-    // injectStore(routes, store)
     const route = await UniversalRouter.resolve(routes, {
       path: req.path,
       query: req.query,
