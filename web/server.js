@@ -45,7 +45,7 @@ const proxy = httpProxy.createProxyServer({
   target: proxyUrl,
   changeOrigin: true,
 })
-proxy.on('proxyReq', (proxyReq, req, res, options) => {
+proxy.on('proxyReq', (proxyReq, req, res, options) => { // eslint-disable-line no-unused-vars
   proxyReq.setHeader('A-CID', 'MORNING-STAR')
 })
 proxy.on('error', (err, req, res) => {
