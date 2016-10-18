@@ -1,24 +1,25 @@
 // import Promise from 'bluebird'
 import fetch, { Request, Headers, Response } from 'node-fetch'
-import { host } from '../../config'
+// import { host } from '../../config'
+//
+// fetch.Promise = Promise
+// Response.Promise = Promise
+//
+// function localUrl(url) {
+//   return url
+//   if (url.startsWith('//')) {
+//     return `https:${url}`
+//   }
+//
+//   if (url.startsWith('http')) {
+//     return url
+//   }
+//
+//   return `http://${host}${url}`
+// }
+//
+// function localFetch(url, options) {
+//   return fetch(localUrl(url), options)
+// }
 
-fetch.Promise = Promise
-Response.Promise = Promise
-
-function localUrl(url) {
-  if (url.startsWith('//')) {
-    return `https:${url}`
-  }
-
-  if (url.startsWith('http')) {
-    return url
-  }
-
-  return `http://${host}${url}`
-}
-
-function localFetch(url, options) {
-  return fetch(localUrl(url), options)
-}
-
-export { localFetch as default, Request, Headers, Response }
+export { fetch as default, Request, Headers, Response }
