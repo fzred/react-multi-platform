@@ -14,7 +14,6 @@ import interceptorsErrCatch from './http/interceptor/errCatch'
 
 const rend = new Rend({ fetch, Headers })
 interceptorsErrCatch(rend)
-window.fetch = fetch
 const initialState = JSON.parse(
   document
     .getElementById('source')
