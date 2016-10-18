@@ -15,19 +15,15 @@ function localUrl(url) {
   return `http://${host}${url}`
 }
 export default function (rend, { req }) {
-  // 修改url
+  // 设置cookie  修改url
   rend.interceptors.request.push(requestConfig => {
     const request = Object.assign({}, requestConfig)
-    request.url = localUrl(request.url)
-    return request
-  })
-
-  // 设置cookie
-  rend.interceptors.request.push(requestConfig => {
-    const request = Object.assign({}, requestConfig)
-    if (req && req.headers) {
+    const isLocalUrl = /^\/($|[^\/])/.test(request.url)
+    if (isLocalUrl && request.credentials === 'include' && req && req.headers) {
       request.headers.set('cookie', req.headers.cookie)
     }
+
+    request.url = localUrl(request.url)
     return request
   })
 }

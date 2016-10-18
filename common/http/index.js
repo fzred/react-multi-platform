@@ -1,5 +1,6 @@
 /*
- 基于 fetch
+ http 请求库
+ 可用于浏览器，Node，RN
  */
 import method from './interceptors/method'
 import send from './interceptors/send'
