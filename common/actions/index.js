@@ -6,8 +6,8 @@ import {
 /*  eslint-disable no-param-reassign */
 
 export function getProductList({ activityId, startNum }) {
-  return dispatch => (
-    fetch(`/b2c-marketing/api/activity/getProductList?activityId=${activityId}&startNum=${startNum}`)
+  return (dispatch, getState, { rend }) => (
+    rend(`/b2c-marketing/api/activity/getProductList?activityId=${activityId}&startNum=${startNum}`)
       .then(res => res.json())
       .then(({ data }) => {
         dispatch({
