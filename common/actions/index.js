@@ -3,8 +3,6 @@ import {
   ACTIVITY_PRODUCT_LIST_CONCAT,
 } from '../types'
 
-/*  eslint-disable no-param-reassign */
-
 export function getProductList({ activityId, startNum }) {
   return (dispatch, getState, { rend }) => (
     rend.get('/b2c-marketing/api/activity/getProductList', {
@@ -20,14 +18,15 @@ export function getProductList({ activityId, startNum }) {
   )
 }
 
-
 export function fetchHomeHeadPageData() {
   return (dispatch, getState, { rend }) => (
-    rend.get('/b2c-marketing/api/activity/getHeadPageData22')
+    rend.get('/b2c-marketing/api/activity/getHeadPageData')
       .then(({ data }) => {
         if (data) {
+          //  eslint-disable-next-line no-param-reassign
           data.fetchDate = Date.now()
         } else {
+          //  eslint-disable-next-line no-param-reassign
           data = data || { list: [] }
         }
         dispatch({
@@ -47,32 +46,5 @@ export function fetchHomeHeadPageData() {
           return false
         })
       )))
-  )
-}
-
-export function getHomeModule() {
-  return {
-    type: 'GET_HOME_MODULE',
-  }
-}
-
-export function getHomeModule1() {
-  return {
-    type: 'GET_HOME_MODULE',
-  }
-}
-
-export function fetchTest() {
-  return dispatch => (
-    new Promise(resolve => {
-      setTimeout(() => {
-        // Yay! Can invoke sync or async actions with `dispatch`
-        dispatch({
-          type: 'FETCH_TEST',
-          list: [111, 1],
-        })
-        resolve()
-      }, 1000)
-    })
   )
 }
