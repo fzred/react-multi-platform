@@ -8,9 +8,10 @@ import after from './interceptors/after'
 import { when } from './util'
 
 export default class Rend {
-  constructor({ fetch, Headers }) {
-    this.fetch = fetch
-    this.Headers = Headers
+  constructor(extraArgument) {
+    Object.assign(this, extraArgument)
+    // this.fetch = fetch
+    // this.Headers = Headers
     this.interceptors = {
       request: [],
       response: [],
