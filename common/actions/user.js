@@ -1,11 +1,8 @@
 import { USERS_INFO_SET, USERS_INFO_CLEAR } from '../types'
 
 export function getUsersInfo() {
-  return dispatch => (
-    fetch('/b2c-user/api/users/getUsersInfo', {
-      credentials: 'include',
-    })
-      .then(res => res.json())
+  return (dispatch, getState, { rend }) => (
+    rend.get('/b2c-user/api/users/getUsersInfo')
       .then(({ data, code }) => {
         if (code === 1000) {
           dispatch({

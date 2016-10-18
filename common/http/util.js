@@ -43,3 +43,31 @@ export function each(obj, iterator) {
 
   return obj
 }
+
+// eslint-disable-next-line no-underscore-dangle
+function _merge(target, source, deep) {
+  each(source, (value, key) => {
+    if (deep && (isPlainObject(source[key]) || isArray(source[key]))) {
+      if (isPlainObject(source[key]) && !isPlainObject(target[key])) {
+        // eslint-disable-next-line no-param-reassign
+        target[key] = {}
+      }
+      if (isArray(source[key]) && !isArray(target[key])) {
+        // eslint-disable-next-line no-param-reassign
+        target[key] = []
+      }
+      _merge(target[key], source[key], deep)
+    } else if (source[key] !== undefined) {
+      // eslint-disable-next-line no-param-reassign
+      target[key] = source[key]
+    }
+  })
+}
+
+export function merge(target, ...sources) {
+  sources.forEach((source) => {
+    _merge(target, source, true)
+  })
+
+  return target
+}

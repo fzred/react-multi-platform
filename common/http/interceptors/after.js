@@ -1,3 +1,7 @@
 export default function (res) {
-  return res.json()
+  try {
+    return res.json()
+  } catch (e) {
+    return res
+  }
 }

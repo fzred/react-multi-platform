@@ -27,9 +27,12 @@ import routes from './routes'
 import assets from './assets' // eslint-disable-line import/no-unresolved
 import { port, proxyUrl } from './config'
 import configureStore from './store/configureStore'
-import fetch from './core/fetch'
+import fetch, { Headers, Response, Request } from './core/fetch'
 
 global.fetch = fetch
+global.Headers = Headers
+global.Response = Response
+global.Request = Request
 const app = express()
 //
 // Tell any CSS tooling (such as Material UI) to use all vendor prefixes if the

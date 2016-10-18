@@ -1,12 +1,16 @@
+import { merge } from '../util'
+
 export default function (requestConfig) {
-  const request = Object.assign({
+  // eslint-disable-next-line
+  requestConfig.options = requestConfig.options || {}
+  const request = merge({
     method: 'GET',
     credentials: 'include',
     header: {
       Accept: 'application/json, text/plain, */*',
       'Content-Type': 'application/json',
     },
-    option: {
+    options: {
       emulateHTTP: false,
       emulateJSON: false,
     },
@@ -14,5 +18,5 @@ export default function (requestConfig) {
   }, requestConfig)
   request.header = new Headers(request.header)
 
-  return fetch(request)
+  return request
 }

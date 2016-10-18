@@ -7,15 +7,16 @@ import {
 
 export function getProductList({ activityId, startNum }) {
   return (dispatch, getState, { rend }) => (
-    rend(`/b2c-marketing/api/activity/getProductList?activityId=${activityId}&startNum=${startNum}`)
-      .then(res => res.json())
-      .then(({ data }) => {
-        dispatch({
-          type: startNum > 0 ? ACTIVITY_PRODUCT_LIST_CONCAT : ACTIVITY_PRODUCT_LIST_SET,
-          activityId,
-          data,
-        })
+    rend.get('/b2c-marketing/api/activity/getProductList', {
+      activityId,
+      startNum,
+    }).then(({ data }) => {
+      dispatch({
+        type: startNum > 0 ? ACTIVITY_PRODUCT_LIST_CONCAT : ACTIVITY_PRODUCT_LIST_SET,
+        activityId,
+        data,
       })
+    })
   )
 }
 

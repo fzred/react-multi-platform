@@ -1,6 +1,6 @@
 export default function (requestConfig) {
   const request = Object.assign({}, requestConfig)
-  const { options } = request
+  const { url, options } = request
   if (options.client) {
     // 自定义http请求handle
     return options.client(request)
@@ -8,5 +8,6 @@ export default function (requestConfig) {
 
   delete request.data
   delete request.options
-  return fetch(request)
+  delete request.url
+  return fetch(url, request)
 }

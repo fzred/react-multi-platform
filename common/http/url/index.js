@@ -38,7 +38,7 @@ export function queryParams(obj) {
       value = ''
     }
 
-    this.push(`${escape(key)}=${escape(value)}`)
+    params.push(`${escape(key)}=${escape(value)}`)
   }
 
   serialize(params, obj)
