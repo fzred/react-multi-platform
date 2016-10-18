@@ -6,7 +6,7 @@ export default function (requestConfig) {
   const request = merge({
     method: 'GET',
     credentials: 'include',
-    header: {
+    headers: {
       Accept: 'application/json, text/plain, */*',
       'Content-Type': 'application/json',
     },
@@ -16,7 +16,7 @@ export default function (requestConfig) {
     },
     data: {},
   }, requestConfig)
-  request.header = new Headers(request.header)
+  request.headers = new Headers(request.headers)
 
   return request
 }

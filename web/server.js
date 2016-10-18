@@ -27,6 +27,7 @@ import routes from './routes'
 import assets from './assets' // eslint-disable-line import/no-unresolved
 import { port, proxyUrl } from './config'
 import configureStore from './store/configureStore'
+import interceptors from './http/interceptor/server'
 import fetch, { Headers, Response, Request } from './core/fetch'
 
 global.fetch = fetch
@@ -70,7 +71,6 @@ proxy.on('error', (err, req, res) => {
   })
 })
 app.all(/(\/api\/.*)|(\/b2c-\/.*)/, (req, res) => {
-  console.log(req.cookies)
   proxy.web(req, res)
 })
 
@@ -80,6 +80,7 @@ app.all(/(\/api\/.*)|(\/b2c-\/.*)/, (req, res) => {
 app.get('*', async(req, res, next) => {
   try {
     const rend = new Rend()
+    interceptors(rend, { req })
     const store = configureStore({}, {
       cookie: req.headers.cookie,
       rend,
