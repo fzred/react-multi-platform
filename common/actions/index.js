@@ -22,9 +22,8 @@ export function getProductList({ activityId, startNum }) {
 
 
 export function fetchHomeHeadPageData() {
-  return dispatch => (
-    fetch('/b2c-marketing/api/activity/getHeadPageData')
-      .then(res => res.json())
+  return (dispatch, getState, { rend }) => (
+    rend.get('/b2c-marketing/api/activity/getHeadPageData22')
       .then(({ data }) => {
         if (data) {
           data.fetchDate = Date.now()

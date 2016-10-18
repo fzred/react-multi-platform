@@ -10,8 +10,10 @@ import configureStore from './store/configureStore'
 import App from './components/App'
 import fetch from './core/fetch'
 import Rend from '../common/http'
+import interceptorsErrCatch from './http/interceptor/errCatch'
 
 const rend = new Rend()
+interceptorsErrCatch(rend)
 window.fetch = fetch
 const initialState = JSON.parse(
   document

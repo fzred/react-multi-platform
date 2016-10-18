@@ -1,5 +1,5 @@
 /*
-注册服务端 rend 拦截器
+ 注册服务端 rend 拦截器
  */
 export default function (rend, { req }) {
   rend.interceptors.request.push(requestConfig => {

@@ -12,6 +12,7 @@ export default class Rend {
     this.interceptors = {
       request: [],
       response: [],
+      responseErr: [],
     }
   }
 
@@ -31,6 +32,10 @@ export default class Rend {
     // 注册请求后拦截器
     for (const value of this.interceptors.response) {
       promise = when(promise, value)
+    }
+
+    for (const value of this.interceptors.responseErr) {
+      promise = when(promise, null, value)
     }
 
     promise = when(promise, after)
