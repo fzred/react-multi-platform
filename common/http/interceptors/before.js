@@ -16,7 +16,7 @@ export default function (requestConfig) {
     },
     data: {},
   }, requestConfig)
-  request.headers = new Headers(request.headers)
+  request.headers = new this.Headers(request.headers)
 
   return request
 }

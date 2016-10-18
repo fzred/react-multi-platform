@@ -29,12 +29,12 @@ import { port, proxyUrl } from './config'
 import configureStore from './store/configureStore'
 import interceptorsServer from './http/interceptor/server'
 import interceptorsErrCatch from './http/interceptor/errCatch'
-import fetch, { Headers, Response, Request } from './core/fetch'
+import fetch, { Headers } from './core/fetch'
 
-global.fetch = fetch
-global.Headers = Headers
-global.Response = Response
-global.Request = Request
+// global.fetch = fetch
+// global.Headers = Headers
+// global.Response = Response
+// global.Request = Request
 const app = express()
 //
 // Tell any CSS tooling (such as Material UI) to use all vendor prefixes if the
@@ -80,7 +80,7 @@ app.all(/(\/api\/.*)|(\/b2c-\/.*)/, (req, res) => {
 // -----------------------------------------------------------------------------
 app.get('*', async(req, res, next) => {
   try {
-    const rend = new Rend()
+    const rend = new Rend({ fetch, Headers })
     interceptorsServer(rend, { req })
     interceptorsErrCatch(rend)
     const store = configureStore({}, {

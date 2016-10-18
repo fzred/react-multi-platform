@@ -9,5 +9,5 @@ export default function (requestConfig) {
   delete request.data
   delete request.options
   delete request.url
-  return fetch(url, request)
+  return this.fetch(url, request)
 }
