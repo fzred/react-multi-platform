@@ -31,10 +31,6 @@ import interceptorsServer from './http/interceptor/server'
 import interceptorsErrCatch from './http/interceptor/errCatch'
 import fetch, { Headers } from './core/fetch'
 
-// global.fetch = fetch
-// global.Headers = Headers
-// global.Response = Response
-// global.Request = Request
 const app = express()
 //
 // Tell any CSS tooling (such as Material UI) to use all vendor prefixes if the
