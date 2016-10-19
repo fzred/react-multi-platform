@@ -40,10 +40,8 @@ function Home({ homeList }) {
 Home.propTypes = {
   dispatch: PropTypes.func.isRequired,
   homeList: PropTypes.object,
-  testAsync: PropTypes.array,
 }
 
 export default connect(state => ({
   homeList: state.home,
-  testAsync: state.testAsync,
 }))(withStyles(s)(Home))

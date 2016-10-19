@@ -7,6 +7,6 @@
 import {
   AppRegistry,
 } from 'react-native'
-import Main from './app/common/Main'
+import Main from './app/Main'
 
 AppRegistry.registerComponent('MyProject', () => Main)
