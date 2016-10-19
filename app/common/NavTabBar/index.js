@@ -46,7 +46,7 @@ export default class extends Component {
 
   componentDidMount() {
     // Animated.Value监听范围 [0, tab数量-1]
-    this.props.scrollValue.addListener(this.setAnimationValue);
+    this.props.scrollValue.addListener(this.setAnimationValue)
   }
 
   renderTabOption(tab, i) {
@@ -57,13 +57,13 @@ export default class extends Component {
       imgSrc = tab.img[1]
     }
     return (
-      <TouchableOpacity key={i} onPress={()=>this.props.goToPage(i)} style={styles.tab}>
+      <TouchableOpacity key={i} onPress={() => this.props.goToPage(i)} style={styles.tab}>
         <View style={styles.tabItem}>
           <Image
             style={{ width: 33, height: 33 }}
-            source={ imgSrc }
+            source={imgSrc}
           />
-          <Text style={{ color: color }}>
+          <Text style={{ color }}>
             {tab.name}
           </Text>
         </View>
