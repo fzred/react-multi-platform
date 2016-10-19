@@ -20,7 +20,7 @@ export default function (rend, { req }) {
     const request = Object.assign({}, requestConfig)
     const isLocalUrl = /^\/($|[^\/])/.test(request.url)
     if (isLocalUrl && request.credentials === 'include' && req && req.headers) {
-      request.headers.set('cookie', req.headers.cookie)
+      request.headers.set('cookie', req.headers.cookie || '')
     }
 
     request.url = localUrl(request.url)

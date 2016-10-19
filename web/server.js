@@ -104,7 +104,6 @@ app.get('*', async(req, res, next) => {
         throw error
       },
     })
-
     const data = { ...route }
     data.children = ReactDOM.renderToString((
       <App context={context}>
