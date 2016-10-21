@@ -39,29 +39,8 @@ class Main extends Component {
         />
       </Provider>
     )
-
-    // return (
-    //   <Provider store={store}>
-    //     <ScrollableTabView renderTabBar={() => <NavTabBar />} tabBarPosition="bottom">
-    //       <Home tabLabel="Home" />
-    //       <Category tabLabel="Category" />
-    //     </ScrollableTabView>
-    //   </Provider>
-    // )
   }
 
 }
-
-//    return (
-//      <Navigator
-//        initialRoute={{ name: 'Home', component: Home }}
-//        configureScene={(route) => {
-//          return Navigator.SceneConfigs.VerticalDownSwipeJump
-//        }}
-//        renderScene={(route, navigator) => {
-//          let Component = route.component;
-//          return <Component {...route.params} navigator={navigator}/>
-//        }}/>
-//    )
 
 export default Main
