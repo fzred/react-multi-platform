@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom/server'
 import createMemoryHistory from 'history/createMemoryHistory'
 import PrettyError from 'pretty-error'
 import httpProxy from 'http-proxy'
-import Rend from '../common/http'
+import FetchDog from 'fetch-dog'
 import UniversalRouter from './universalRouter'
 import App from './components/App'
 import Html from './components/Html'
@@ -67,12 +67,12 @@ app.all(/(\/api\/.*)|(\/b2c-\/.*)/, (req, res) => {
 // -----------------------------------------------------------------------------
 app.get('*', async(req, res, next) => {
   try {
-    const rend = new Rend({ fetch, Headers })
-    interceptorsServer(rend, { req })
-    interceptorsErrCatch(rend)
+    const fd = new FetchDog({ fetch, Headers })
+    interceptorsServer(fd, { req })
+    interceptorsErrCatch(fd)
     const store = configureStore({}, {
       cookie: req.headers.cookie,
-      rend,
+      fd,
     })
 
     const css = new Set()

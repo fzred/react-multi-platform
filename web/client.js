@@ -5,15 +5,16 @@ import FastClick from 'fastclick'
 import queryString from 'query-string'
 import createBrowserHistory from 'history/createBrowserHistory'
 import { createPath } from 'history/PathUtils'
+import FetchDog from 'fetch-dog'
 import UniversalRouter from './universalRouter'
 import configureStore from './store/configureStore'
 import App from './components/App'
 import fetch, { Headers } from './core/fetch'
-import Rend from '../common/http'
+
 import interceptorsErrCatch from './http/interceptor/errCatch'
 
-const rend = new Rend({ fetch, Headers })
-interceptorsErrCatch(rend)
+const fd = new FetchDog({ fetch, Headers })
+interceptorsErrCatch(fd)
 const initialState = JSON.parse(
   document
     .getElementById('source')
@@ -21,7 +22,7 @@ const initialState = JSON.parse(
 )
 const store = configureStore(initialState, {
   history,
-  rend,
+  fd,
 })
 // Global (context) variables that can be easily accessed from any React component
 // https://facebook.github.io/react/docs/context.html

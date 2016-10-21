@@ -4,8 +4,8 @@ import {
 } from '../types'
 
 export function getProductList({ activityId, startNum }) {
-  return (dispatch, getState, { rend }) => (
-    rend.get('/b2c-marketing/api/activity/getProductList', {
+  return (dispatch, getState, { fd }) => (
+    fd.get('/b2c-marketing/api/activity/getProductList', {
       activityId,
       startNum,
     }).then(({ data }) => {
@@ -19,8 +19,8 @@ export function getProductList({ activityId, startNum }) {
 }
 
 export function fetchHomeHeadPageData() {
-  return (dispatch, getState, { rend }) => (
-    rend.get('/b2c-marketing/api/activity/getHeadPageData')
+  return (dispatch, getState, { fd }) => (
+    fd.get('/b2c-marketing/api/activity/getHeadPageData')
       .then(({ data }) => {
         if (data) {
           //  eslint-disable-next-line no-param-reassign
