@@ -44,7 +44,9 @@ class Home extends Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(fetchHomeHeadPageData())
+    if (this.props.homeList.list.length === 0) {
+      this.props.dispatch(fetchHomeHeadPageData())
+    }
   }
 
   render() {
