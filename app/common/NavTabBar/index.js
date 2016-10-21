@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native'
-import { color as styleColor } from '../styleVar'
+import { color as styleColor } from '../../styleVar'
 const tabs = [
   {
     name: '首页',

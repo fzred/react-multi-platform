@@ -1,15 +1,14 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import {
-  Navigator,
   Text,
   View,
   TouchableOpacity,
   ScrollView,
   StyleSheet,
 } from 'react-native'
-import { fetchHomeHeadPageData } from '../../../common/actions'
-import { color as styleColor } from '../../styleVar'
+import { fetchHomeHeadPageData } from '../../../../common/actions'
+import { color as styleColor } from '../../../styleVar'
 import Type1 from './components/Type1'
 import Type2 from './components/Type2'
 import Type10 from './components/Type10'

@@ -1,19 +1,14 @@
 import React, { Component, PropTypes } from 'react'
+import {
+  Navigator,
+} from 'react-native'
 import { Provider } from 'react-redux'
-import ScrollableTabView from 'react-native-scrollable-tab-view'
-import Home from './common/Home/Home'
-import Category from './common/Category'
-import NavTabBar from './common/NavTabBar/'
+import routes from './routes'
 import configureStore from './store/configureStore'
-import Rend from '../common/http'
-import interceptorsServer from './http/interceptor/server'
-import interceptorsErrCatch from './http/interceptor/errCatch'
+import http from './http'
 
-const rend = new Rend({ fetch, Headers })
-interceptorsServer(rend)
-interceptorsErrCatch(rend)
 const store = configureStore({}, {
-  rend,
+  fd: http,
 })
 
 class Main extends Component {
@@ -31,12 +26,28 @@ class Main extends Component {
   render() { // eslint-disable-line class-methods-use-this
     return (
       <Provider store={store}>
-        <ScrollableTabView renderTabBar={() => <NavTabBar />} tabBarPosition="bottom">
-          <Home tabLabel="Home" />
-          <Category tabLabel="Category" />
-        </ScrollableTabView>
+        <Navigator
+          initialRoute={routes.navTabs()}
+          configureScene={(route) => {
+            console.log(route)
+            return Navigator.SceneConfigs.VerticalDownSwipeJump
+          }}
+          renderScene={(route, navigator) => {
+            const RouteComponent = route.component
+            return <RouteComponent {...route.params} navigator={navigator} />
+          }}
+        />
       </Provider>
     )
+
+    // return (
+    //   <Provider store={store}>
+    //     <ScrollableTabView renderTabBar={() => <NavTabBar />} tabBarPosition="bottom">
+    //       <Home tabLabel="Home" />
+    //       <Category tabLabel="Category" />
+    //     </ScrollableTabView>
+    //   </Provider>
+    // )
   }
 
 }

@@ -10,7 +10,7 @@ import {
   Dimensions,
   PixelRatio,
 } from 'react-native'
-import { color as styleColor } from '../../../styleVar'
+import { color as styleColor } from '../../../../styleVar'
 
 const width = Dimensions.get('window').width
 const styles = StyleSheet.create({
