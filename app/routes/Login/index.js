@@ -1,12 +1,12 @@
-import React, { PropTypes, Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import {
   Text,
   View,
   TouchableOpacity,
 } from 'react-native'
-import routes from '../../index'
+import routes from '../index'
 
-export default class extends Component {
+class Login extends Component {
   static propTypes = {
     navigator: PropTypes.object,
   }
@@ -16,21 +16,22 @@ export default class extends Component {
     this.pressButton = this.pressButton.bind(this)
   }
 
+
   pressButton() {
     const { navigator } = this.props
-    navigator.push(routes.login())
-    // if (navigator) {
-    //   navigator.pop()
-    // }
+    navigator.push(routes.navTabs())
   }
 
   render() {
     return (
       <View>
         <TouchableOpacity onPress={this.pressButton}>
-          <Text>去登录</Text>
+          <Text>这里是登录页</Text>
         </TouchableOpacity>
       </View>
     )
   }
 }
+
+
+export default Login

@@ -4,14 +4,14 @@ import Home from './Home'
 import Category from './Category'
 import NavTabBar from './NavTabBar/'
 
-function NavTabs() {
+function NavTabs(props) {
   return (
     <ScrollableTabView
       renderTabBar={() => <NavTabBar />}
       tabBarPosition="bottom"
     >
-      <Home tabLabel="Home" />
-      <Category tabLabel="Category" />
+      <Home tabLabel="Home" {...props} />
+      <Category tabLabel="Category" {...props} />
     </ScrollableTabView>
   )
 }
