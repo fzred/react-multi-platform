@@ -26,8 +26,8 @@ class Login extends Component {
 
 
   pressButton() {
-    this.context.toast.show('111')
-    // this.context.nav.push(routes.navTabs())
+    this.context.toast.show('返回')
+    this.context.nav.push(routes.navTabs())
   }
 
   render() {

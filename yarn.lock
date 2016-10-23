@@ -4491,10 +4491,6 @@ joi@^6.10.1, joi@^6.6.1, joi@~6.10.1:
     moment "2.x.x"
     topo "1.x.x"
 
-jquery-callbacks@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/jquery-callbacks/-/jquery-callbacks-0.0.1.tgz#48785e3d01e2bcac473e8343027bedbb6be4613d"
-
 js-base64@^2.1.9:
   version "2.1.9"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.1.9.tgz#f0e80ae039a4bd654b5f281fc93f04a914a7fcce"
@@ -5045,7 +5041,7 @@ lodash.words@^3.0.0:
   dependencies:
     lodash._root "^3.0.0"
 
-lodash@^3.1.0, lodash@^3.10.0, lodash@^3.10.1, lodash@^3.2.0, lodash@^3.3.1, lodash@^3.5.0, lodash@^3.6.0:
+lodash@^3.1.0, lodash@^3.10.1, lodash@^3.2.0, lodash@^3.3.1, lodash@^3.5.0, lodash@^3.6.0:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
@@ -6514,19 +6510,6 @@ react-deep-force-update@^1.0.0:
 react-dom@15.3.2:
   version "15.3.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.3.2.tgz#c46b0aa5380d7b838e7a59c4a7beff2ed315531f"
-
-react-native-root-siblings@^1.0.7:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/react-native-root-siblings/-/react-native-root-siblings-1.0.8.tgz#c0915708308e694613587855b46e669843291b1d"
-  dependencies:
-    jquery-callbacks "^0.0.1"
-    lodash "^3.10.0"
-
-react-native-root-toast:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/react-native-root-toast/-/react-native-root-toast-1.0.3.tgz#3518043e5696d7f6f5ba42a2ba81c496cf0da11c"
-  dependencies:
-    react-native-root-siblings "^1.0.7"
 
 react-native-scrollable-tab-view@^0.6.0:
   version "0.6.0"

@@ -5,7 +5,6 @@ import {
   View,
   StyleSheet,
 } from 'react-native'
-// import Toast from 'react-native-root-toast'
 import { Provider } from 'react-redux'
 import routes from './routes'
 import configureStore from './store/configureStore'
