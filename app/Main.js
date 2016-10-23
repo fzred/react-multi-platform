@@ -11,10 +11,6 @@ import configureStore from './store/configureStore'
 import http from './http'
 import Toast from './components/Toast'
 
-const store = configureStore({}, {
-  fd: http,
-})
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -35,12 +31,15 @@ class Main extends Component {
     this.state = {
       nav: null,
       toast: null,
+      store: configureStore({}, {
+        fd: http,
+      }),
     }
   }
 
   getChildContext() {
     return {
-      store,
+      store: this.state.store,
       toast: this.state.toast,
       nav: this.state.nav,
     }
@@ -93,7 +92,7 @@ class Main extends Component {
 
   render() {
     return (
-      <Provider store={store}>
+      <Provider store={this.state.store}>
         <View style={styles.container}>
           <Navigator
             ref={nav => {
