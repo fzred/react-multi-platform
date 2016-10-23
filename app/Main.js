@@ -27,14 +27,13 @@ class Main extends Component {
     return (
       <Provider store={store}>
         <Navigator
-          initialRoute={routes.login()}
+          initialRoute={routes.navTabs()}
           configureScene={(route) => {
             console.log(route.name)
-            return Navigator.SceneConfigs.FloatFromBottom
+            return Navigator.SceneConfigs.FadeAndroid
           }}
           renderScene={(route, navigator) => {
             const RouteComponent = route.component
-            console.log(route.name)
             return <RouteComponent {...route.params} navigator={navigator} />
           }}
         />
