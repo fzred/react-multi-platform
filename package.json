@@ -50,6 +50,7 @@
     "react": "15.3.2",
     "react-dom": "15.3.2",
     "react-native": "0.33.0",
+    "react-native-root-toast": "^1.0.3",
     "react-native-scrollable-tab-view": "^0.6.0",
     "react-native-swiper": "^1.4.11",
     "react-redux": "^4.4.5",

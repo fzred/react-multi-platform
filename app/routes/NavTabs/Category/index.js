@@ -7,8 +7,9 @@ import {
 import routes from '../../index'
 
 export default class extends Component {
-  static propTypes = {
-    navigator: PropTypes.object,
+
+  static contextTypes = {
+    nav: PropTypes.object,
   }
 
   constructor() {
@@ -17,8 +18,7 @@ export default class extends Component {
   }
 
   pressButton() {
-    const { navigator } = this.props
-    navigator.push(routes.login())
+    this.context.nav.push(routes.login())
     // if (navigator) {
     //   navigator.pop()
     // }

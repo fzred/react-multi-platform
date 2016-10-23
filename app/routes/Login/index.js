@@ -7,8 +7,8 @@ import {
 import routes from '../index'
 
 class Login extends Component {
-  static propTypes = {
-    navigator: PropTypes.object,
+  static contextTypes = {
+    nav: PropTypes.object,
   }
 
   constructor() {
@@ -18,8 +18,7 @@ class Login extends Component {
 
 
   pressButton() {
-    const { navigator } = this.props
-    navigator.push(routes.navTabs())
+    this.context.nav.push(routes.navTabs())
   }
 
   render() {
