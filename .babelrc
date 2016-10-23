@@ -1,0 +1,19 @@
+{
+  "presets": [
+    "react-native"
+  ],
+  "env": {
+    "WEB": {
+      "presets": [
+        "react",
+        "node5",
+        "stage-0"
+      ]
+    },
+    "test": {
+      "plugins": [
+        "rewire"
+      ]
+    }
+  }
+}
