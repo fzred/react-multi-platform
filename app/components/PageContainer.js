@@ -3,7 +3,7 @@ import React, {
   PropTypes,
 } from 'react-native'
 import UniversalRouter from '../../common/universalRouter'
-import routesConfig from '../routes'
+import routes from '../routes'
 
 class PageContainer extends React.Component {
   static propTypes = {
@@ -26,12 +26,18 @@ class PageContainer extends React.Component {
   }
 
   async doMatch(props) {
-    const { path } = props
     try {
-      const route = UniversalRouter.resolve(routesConfig, {
-        path,
+      const route = UniversalRouter.resolve(routes, {
+        path: props.path,
         store: this.context.store,
+        redirect(to) {
+          const error = new Error(`Redirecting to "${to}"...`)
+          error.status = 301
+          error.path = to
+          throw error
+        },
       })
+
       this.setState({ route })
     } catch (err) {
       if (err.status === 301) {
