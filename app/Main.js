@@ -28,6 +28,7 @@ class Main extends Component {
   constructor() {
     super()
     this.onBackAndroid = this.onBackAndroid.bind(this)
+    this.renderScene = this.renderScene.bind(this)
     this.state = {
       nav: null,
       toast: null,
@@ -90,6 +91,16 @@ class Main extends Component {
     return false
   }
 
+  renderScene(route) {
+    if (!this.state.nav) {
+      return <View />
+    }
+    const RouteComponent = route.component
+    return (
+      <RouteComponent {...route.params} />
+    )
+  }
+
   render() {
     return (
       <Provider store={this.state.store}>
@@ -103,12 +114,7 @@ class Main extends Component {
               console.log(route.name)
               return Navigator.SceneConfigs.FadeAndroid
             }}
-            renderScene={(route) => {
-              const RouteComponent = route.component
-              return (
-                <RouteComponent {...route.params} />
-              )
-            }}
+            renderScene={this.renderScene}
           />
           <Toast
             ref={toast => {
