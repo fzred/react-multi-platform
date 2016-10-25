@@ -24,17 +24,17 @@ export default {
   /*
    全局钩子 action触发时前
    */
-  async beforeEach({ route, context }) {
+  async beforeEach({ route, store, redirect, path }) {
     if (route === this) {
       return
     }
     if (route.isAuth) {
-      let usersInfo = context.store.getState().usersInfo
+      let usersInfo = store.getState().usersInfo
       if (!usersInfo) {
-        usersInfo = await context.store.dispatch(getUsersInfo())
+        usersInfo = await store.dispatch(getUsersInfo())
       }
       if (!usersInfo) {
-        context.redirect(`/login?sourceurl=${encodeURIComponent(context.path)}`)
+        redirect(`/login?sourceurl=${encodeURIComponent(path)}`)
       }
     }
   },
