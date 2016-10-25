@@ -44,9 +44,6 @@ class PageContainer extends React.Component {
         this.context.nav.replace({ path: err.path || '/' })
         return
       }
-      if (process.env.NODE_ENV !== 'production') {
-        throw err
-      }
 
       if (!__DEV__) {
         throw err
