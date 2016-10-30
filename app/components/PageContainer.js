@@ -1,11 +1,11 @@
-import React, {
+import React, { Component, PropTypes } from 'react'
+import {
   View,
-  PropTypes,
 } from 'react-native'
 import UniversalRouter from '../../common/universalRouter'
 import routes from '../routes'
 
-class PageContainer extends React.Component {
+class PageContainer extends Component {
   static propTypes = {
     path: PropTypes.string.isRequired,
   }
@@ -15,19 +15,27 @@ class PageContainer extends React.Component {
     store: PropTypes.object.isRequired,
   }
 
+  constructor() {
+    super()
+    this.state = {
+      route: null,
+    }
+  }
+
   componentWillMount() {
     this.doMatch(this.props)
   }
 
-  componentWillReceiveProps(newProps) {
-    if (newProps.path !== this.props.path) {
-      this.doMatch(newProps)
-    }
-  }
+  // componentWillReceiveProps(newProps) {
+  //   console.log('componentWillReceiveProps')
+  //   if (newProps.path !== this.props.path) {
+  //     this.doMatch(newProps)
+  //   }
+  // }
 
   async doMatch(props) {
     try {
-      const route = UniversalRouter.resolve(routes, {
+      const route = await UniversalRouter.resolve(routes, {
         path: props.path,
         store: this.context.store,
         redirect(to) {

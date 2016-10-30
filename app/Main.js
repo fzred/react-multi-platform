@@ -6,9 +6,11 @@ import {
   StyleSheet,
 } from 'react-native'
 import { Provider } from 'react-redux'
+import UniversalRouter from '../common/universalRouter'
 import routes from './routes'
 import configureStore from './store/configureStore'
 import http from './http'
+import PageContainer from './components/PageContainer'
 import Toast from './components/Toast'
 
 const styles = StyleSheet.create({
@@ -95,9 +97,15 @@ class Main extends Component {
     if (!this.state.nav) {
       return <View />
     }
-    const RouteComponent = route.component
+    let path = route.path
+    if (route.name) {
+      path = UniversalRouter.matchRoutePathByName(routes, {
+        name: route.name,
+        params: route.params,
+      })
+    }
     return (
-      <RouteComponent {...route.params} />
+      <PageContainer path={path} />
     )
   }
 
@@ -109,7 +117,7 @@ class Main extends Component {
             ref={nav => {
               this.nav = nav
             }}
-            initialRoute={routes.navTabs()}
+            initialRoute={{ name: 'home' }}
             configureScene={(route) => {
               console.log(route.name)
               return Navigator.SceneConfigs.FadeAndroid
