@@ -16,6 +16,8 @@ export default {
 
   path: '/login',
 
+  name: 'login',
+
   action() {
     return {
       title,

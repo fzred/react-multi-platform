@@ -24,7 +24,7 @@ function FootNav({ children, active }) {
             search: active !== 'search',
             searchActive: active === 'search',
           })}
-          to="/search"
+          to={{ name: 'search', params: { word: 'ff' } }}
         >分类</Link>
         <a
           className={cx({

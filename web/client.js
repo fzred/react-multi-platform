@@ -140,6 +140,8 @@ let routes = require('./routes').default
 
 // Re-render the app when window.location changes
 async function onLocationChange(location) {
+  debugger
+  console.log(location)
   // Remember the latest scroll position for the previous location
   scrollPositionsHistory[currentLocation.key] = {
     scrollX: window.pageXOffset,

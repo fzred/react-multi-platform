@@ -11,7 +11,7 @@ function isModifiedEvent(event) {
 class Link extends Component {
 
   static propTypes = {
-    to: PropTypes.string.isRequired,
+    to: PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]).isRequired,
     children: PropTypes.node,
     onClick: PropTypes.func,
   };

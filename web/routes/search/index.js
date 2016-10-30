@@ -4,11 +4,12 @@ import dispatchOnce from '../../store/dispatchOnce'
 
 export default {
 
-  path: '/search',
+  path: '/search/:word',
 
-  store: null,
+  name: 'search',
 
-  async action() {
+  async action(context, { word }) {
+    console.log(word)
     return {
       title: '搜索',
       component: <Search />,
