@@ -1,3 +1,4 @@
 import resolve from './resolve'
+import { matchRoutePathByName } from './matchRoute'
 
-export default { resolve }
+export default { resolve, matchRoutePathByName }

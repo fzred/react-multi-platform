@@ -24,6 +24,8 @@ const store = configureStore(initialState, {
   history,
   fd,
 })
+
+let routes = require('./routes').default
 // Global (context) variables that can be easily accessed from any React component
 // https://facebook.github.io/react/docs/context.html
 const context = {
@@ -40,6 +42,7 @@ const context = {
     }
   },
   store,
+  toPath: to => UniversalRouter.matchRoutePathByName(routes, to),
 }
 
 function updateTag(tagName, keyName, keyValue, attrName, attrValue) {
@@ -94,7 +97,7 @@ let onRenderComplete = function initialRenderComplete() {
     if (pos) {
       scrollX = pos.scrollX
       scrollY = pos.scrollY
-    } else {
+    } else if (location.hash) {
       const targetHash = location.hash.substr(1)
       if (targetHash) {
         const target = document.getElementById(targetHash)
@@ -136,12 +139,9 @@ function render(route, location) {
 FastClick.attach(document.body)
 
 let currentLocation = context.history.location
-let routes = require('./routes').default
 
 // Re-render the app when window.location changes
 async function onLocationChange(location) {
-  debugger
-  console.log(location)
   // Remember the latest scroll position for the previous location
   scrollPositionsHistory[currentLocation.key] = {
     scrollX: window.pageXOffset,
@@ -156,6 +156,8 @@ async function onLocationChange(location) {
   try {
     const route = await UniversalRouter.resolve(routes, {
       path: location.pathname,
+      name: location.name,
+      params: location.params,
       query: queryString.parse(location.search),
       store,
       redirect(to) {

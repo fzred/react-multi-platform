@@ -86,6 +86,7 @@ app.get('*', async(req, res, next) => {
         initialEntries: [req.url],
       }),
       store,
+      toPath: to => UniversalRouter.matchRoutePathByName(routes, to),
       // Enables critical path CSS rendering
       // https://github.com/kriasoft/isomorphic-style-loader
       insertCss: (...styles) => {

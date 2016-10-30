@@ -18,6 +18,7 @@ class Link extends Component {
 
   static contextTypes = {
     history: PropTypes.object.isRequired,
+    toPath: PropTypes.func.isRequired,
   }
 
   handleClick = (event) => {
@@ -34,12 +35,19 @@ class Link extends Component {
     }
 
     event.preventDefault()
-    this.context.history.push(this.props.to)
+    this.context.history.push(this.parsePath(this.props.to))
+  }
+
+  parsePath(to) {
+    if (typeof to === 'string') {
+      return to
+    }
+    return this.context.toPath(to)
   }
 
   render() {
     const { to, children, ...props } = this.props
-    return <a href={to} {...props} onClick={this.handleClick}>{children}</a>
+    return <a href={this.parsePath(to)} {...props} onClick={this.handleClick}>{children}</a>
   }
 
 }

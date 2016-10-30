@@ -1,4 +1,4 @@
-import matchRoute from './matchRoute'
+import { matchRoute, matchRoutePathByName } from './matchRoute'
 
 async function resolve(routes, pathOrContext) {
   const context = typeof pathOrContext === 'string' || pathOrContext instanceof String
@@ -9,6 +9,13 @@ async function resolve(routes, pathOrContext) {
   let value
   let done = false
 
+  if (pathOrContext.name) {
+    // 具名路由匹配
+    context.path = matchRoutePathByName(root, {
+      name: context.name,
+      params: context.params,
+    })
+  }
   const match = matchRoute(root, '', context.path)
 
   async function next() {

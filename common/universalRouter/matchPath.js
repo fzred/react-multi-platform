@@ -40,5 +40,15 @@ function matchPathBase(end, routePath, urlPath) {
   return { path: path === '' ? '/' : path, keys: regexp.keys.slice(), params }
 }
 
+const compileParamsCache = new Map()
+export function toPath(url, params) {
+  let compiled = compileParamsCache.get(url)
+  if (!compiled) {
+    compiled = toRegExp.compile(url)
+    compileParamsCache.set(url, compiled)
+  }
+  return compiled(params)
+}
+
 export const matchPath = matchPathBase.bind(undefined, true)
 export const matchBasePath = matchPathBase.bind(undefined, false)

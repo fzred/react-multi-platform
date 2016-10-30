@@ -1,6 +1,6 @@
-import { matchPath, matchBasePath } from './matchPath'
+import { matchPath, matchBasePath, toPath } from './matchPath'
 
-function* matchRoute(route, baseUrl, path) {
+export function* matchRoute(route, baseUrl, path) {
   let match
 
   if (!route.children) {
@@ -40,4 +40,27 @@ function* matchRoute(route, baseUrl, path) {
   }
 }
 
-export default matchRoute
+function findRoute(route, name) {
+  let path = route.path
+  if (route.name === name) {
+    return { path, route }
+  } else if (route.children) {
+    for (let i = 0; i < route.children.length; i += 1) {
+      const result = findRoute(route.children[i], name)
+      if (result) {
+        path = path.endsWith('/') ? path : `${path}/`
+        path += result.path.startsWith('/') ? result.path.substr(1) : result.path
+        return { path, result }
+      }
+    }
+  }
+  return null
+}
+
+export function matchRoutePathByName(routes, { name, params = {} }) {
+  const route = findRoute(routes, name)
+  if (!route) {
+    return '/404'
+  }
+  return toPath(route.path, params)
+}

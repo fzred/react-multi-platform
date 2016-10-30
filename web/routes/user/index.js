@@ -10,6 +10,7 @@ export default {
   isAuth: 1,
 
   children: [
+    require('./order').default,
     {
       path: '/',
       async action({ store, redirect }) {
