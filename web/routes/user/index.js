@@ -10,7 +10,6 @@ export default {
   isAuth: 1,
 
   children: [
-    require('./login').default,
     {
       path: '/',
       async action({ store, redirect }) {
