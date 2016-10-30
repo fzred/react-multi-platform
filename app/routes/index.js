@@ -12,7 +12,7 @@ export default {
     require('./home').default,
     // require('./user').default,
     // // require('./contact').default,
-    // require('./login').default,
+    require('./login').default,
   ],
 
   /*

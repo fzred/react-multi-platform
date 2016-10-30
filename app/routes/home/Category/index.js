@@ -2,9 +2,8 @@ import React, { PropTypes, Component } from 'react'
 import {
   Text,
   View,
-  TouchableOpacity,
 } from 'react-native'
-import routes from '../../index'
+import Link from '../../../components/Link'
 
 export default class extends Component {
 
@@ -12,24 +11,12 @@ export default class extends Component {
     nav: PropTypes.object,
   }
 
-  constructor() {
-    super()
-    this.pressButton = this.pressButton.bind(this)
-  }
-
-  pressButton() {
-    this.context.nav.push(routes.login())
-    // if (navigator) {
-    //   navigator.pop()
-    // }
-  }
-
   render() {
     return (
       <View>
-        <TouchableOpacity onPress={this.pressButton}>
+        <Link to={{ name: 'login' }}>
           <Text>去登录</Text>
-        </TouchableOpacity>
+        </Link>
       </View>
     )
   }
