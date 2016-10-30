@@ -41,7 +41,7 @@ const tabs = [
 const styles = StyleSheet.create({
   tabs: {
     flexDirection: 'row',
-    height: 60,
+    // height: 60,
     borderTopWidth: 1,
     borderTopColor: styleColor.C8,
   },
@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingBottom: 2,
   },
 
   tabItem: {
