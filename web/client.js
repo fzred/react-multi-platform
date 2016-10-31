@@ -12,9 +12,9 @@ import App from './components/App'
 import fetch, { Headers } from './core/fetch'
 
 import interceptorsErrCatch from './http/interceptor/errCatch'
+import interceptorsClient from './http/interceptor/client'
 
 const fd = new FetchDog({ fetch, Headers })
-interceptorsErrCatch(fd)
 const initialState = JSON.parse(
   document
     .getElementById('source')
@@ -24,6 +24,9 @@ const store = configureStore(initialState, {
   history,
   fd,
 })
+
+interceptorsErrCatch(fd)
+interceptorsClient(fd, { store })
 
 let routes = require('./routes').default
 // Global (context) variables that can be easily accessed from any React component
