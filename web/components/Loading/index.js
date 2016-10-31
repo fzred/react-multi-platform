@@ -9,22 +9,22 @@ function Loading({ loadingCount }) {
     <div className={cns(s.root, loadingCount < 1 ? 'hide' : '')}>
       <div className={s.spinner}>
         <div className={cns(s.spinnerContainer, s.container1)}>
-          <div className={cns(s.circle1)} />
-          <div className={cns(s.circle2)} />
-          <div className={cns(s.circle3)} />
-          <div className={cns(s.circle4)} />
+          <div className={s.circle1} />
+          <div className={s.circle2} />
+          <div className={s.circle3} />
+          <div className={s.circle4} />
         </div>
         <div className={cns(s.spinnerContainer, s.container2)}>
-          <div className={cns(s.circle1)} />
-          <div className={cns(s.circle2)} />
-          <div className={cns(s.circle3)} />
-          <div className={cns(s.circle4)} />
+          <div className={s.circle1} />
+          <div className={s.circle2} />
+          <div className={s.circle3} />
+          <div className={s.circle4} />
         </div>
         <div className={cns(s.spinnerContainer, s.container3)}>
-          <div className={cns(s.circle1)} />
-          <div className={cns(s.circle2)} />
-          <div className={cns(s.circle3)} />
-          <div className={cns(s.circle4)} />
+          <div className={s.circle1} />
+          <div className={s.circle2} />
+          <div className={s.circle3} />
+          <div className={s.circle4} />
         </div>
       </div>
     </div>
