@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import {
   Text,
   View,
-  TouchableOpacity,
+  RefreshControl,
   ScrollView,
   StyleSheet,
 } from 'react-native'
@@ -43,16 +43,40 @@ class Home extends Component {
     homeList: PropTypes.object,
   }
 
+  constructor() {
+    super()
+    this.onRefresh = this.onRefresh.bind(this)
+    this.state = {
+      isRefreshing: false,
+    }
+  }
+
   componentWillMount() {
     if (this.props.homeList.list.length === 0) {
       this.props.dispatch(fetchHomeHeadPageData())
     }
   }
 
+  async onRefresh() {
+    this.setState({ isRefreshing: true })
+    await this.props.dispatch(fetchHomeHeadPageData())
+    this.setState({
+      isRefreshing: false,
+    })
+  }
+
   render() {
     const { homeList } = this.props
     return (
-      <ScrollView style={styles.wrap}>
+      <ScrollView
+        style={styles.wrap}
+        refreshControl={
+          <RefreshControl
+            refreshing={this.state.isRefreshing}
+            onRefresh={this.onRefresh}
+          />
+        }
+      >
         <View>
           <Text>{JSON.stringify(homeList)}</Text>
         </View>
