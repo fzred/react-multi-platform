@@ -9,7 +9,7 @@ export function newRequest() {
   }
 }
 
-export function compliteRequest() {
+export function completeRequest() {
   return {
     type: LOADING_COMPLETE,
   }

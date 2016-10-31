@@ -6,4 +6,4 @@ export const USERS_INFO_CLEAR = 'USERS_INFO_CLEAR'
 // 新的请求
 export const LOADING_NEW = 'LOADING_COUNT'
 // 请求完成
-export const LOADING_COMPLETE = 'LOADING_COUNT'
+export const LOADING_COMPLETE = 'LOADING_COMPLETE'

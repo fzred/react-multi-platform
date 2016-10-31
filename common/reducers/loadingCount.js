@@ -4,7 +4,7 @@ import {
 } from '../types'
 
 export default function loadingCount(state = 0, action) {
-  switch (action.LOADING_NEW) {
+  switch (action.type) {
     case LOADING_NEW:
       return state + 1
     case LOADING_COMPLETE:
