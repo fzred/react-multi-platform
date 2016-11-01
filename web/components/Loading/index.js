@@ -32,7 +32,6 @@ function Loading({ loadingCount }) {
 }
 
 Loading.propTypes = {
-  dispatch: PropTypes.func.isRequired,
   loadingCount: PropTypes.number.isRequired,
 }
 
