@@ -1,7 +1,7 @@
 import React from 'react'
 import Home from './Home'
 import dispatchOnce from '../../store/dispatchOnce'
-import { fetchHomeHeadPageData } from '../../../common/actions'
+import { getHeadPageData } from '../../../common/actions/home'
 
 export default {
 
@@ -32,7 +32,7 @@ export default {
 
     await dispatchOnce({
       store,
-      action: fetchHomeHeadPageData(),
+      action: getHeadPageData(),
       key: 'home',
       time: 1000 * 3600,
     })
