@@ -53,16 +53,20 @@ class Home extends Component {
 
   componentWillMount() {
     if (this.props.homeList.list.length === 0) {
-      this.props.dispatch(getHeadPageData())
+      this.updateData()
     }
   }
 
   async onRefresh() {
     this.setState({ isRefreshing: true })
-    await this.props.dispatch(getHeadPageData())
+    await this.updateData()
     this.setState({
       isRefreshing: false,
     })
+  }
+
+  async updateData() {
+    return this.props.dispatch(getHeadPageData())
   }
 
   render() {
