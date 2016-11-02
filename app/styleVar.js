@@ -10,3 +10,5 @@ export const color = {
   C9: '#eeeeee',
   C10: '#f4f4f4',
 }
+
+export const size = {}
