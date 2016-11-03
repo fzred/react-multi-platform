@@ -4,7 +4,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import s from './index.css'
 import px2rem from '../../../../common/px2rem'
 import Pager from '../../../../components/Pager'
-import { getProductList } from '../../../../../common/actions'
+import { getProductList } from '../../../../../common/actions/activity'
 
 class ProductListRows extends Component {
   static propTypes = {
