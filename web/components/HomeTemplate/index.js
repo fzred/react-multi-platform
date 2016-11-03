@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
+import px2rem from '../../common/px2rem'
 import BannerList from './components/BannerList'
 import HorizontalTwoAct from './components/HorizontalTwoAct'
 import ProductListRows from './components/ProductListRows'
@@ -20,7 +21,14 @@ function renderMudule(item, i) {
 function HomeTemplate({ template }) {
   return (
     <div>
-      {template.list.map(renderMudule)}
+      {template.list.map((item, i) => (
+        <section
+          style={{ marginBottom: `${px2rem(item.margin)}rem` }}
+          stylecode={item.styleCode}
+        >
+          {renderMudule(item, i)}
+        </section>
+      ))}
     </div>
   )
 }
