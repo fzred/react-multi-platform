@@ -6,16 +6,14 @@ import {
 export default function home(state = {}, action) {
   switch (action.type) {
     case ACTIVITY_PRODUCT_LIST_SET:
-      return Object.assign({}, state, {
-        [action.activityId]: action.data,
-      })
+      return { ...state, [action.activityId]: action.data }
     case ACTIVITY_PRODUCT_LIST_CONCAT: {
-      const newState = Object.assign({}, state)
+      const newState = { ...state }
       if (newState[action.activityId]) {
         // 已存在，拼接在后面，瀑布式
         const oldData = newState[action.activityId]
         // eslint-disable-next-line no-param-reassign
-        action.data.list = action.data.list.concat(oldData.list)
+        action.data.list = [...action.data.list, ...oldData.list]
       }
       newState[action.activityId] = action.data
       return newState
