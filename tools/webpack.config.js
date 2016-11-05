@@ -64,6 +64,7 @@ const config = {
             'stage-0',
           ],
           plugins: [
+            'transform-decorators-legacy',
             'transform-runtime',
             ...DEBUG ? [] : [
               'transform-react-remove-prop-types',
