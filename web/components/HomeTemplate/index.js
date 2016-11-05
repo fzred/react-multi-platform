@@ -24,7 +24,8 @@ function HomeTemplate({ template }) {
       {template.list.map((item, i) => (
         <section
           style={{ marginBottom: `${px2rem(item.margin)}rem` }}
-          stylecode={item.styleCode}
+          data-stylecode={item.styleCode}
+          key={i}
         >
           {renderMudule(item, i)}
         </section>
@@ -37,4 +38,4 @@ HomeTemplate.propTypes = {
   template: PropTypes.object.isRequired,
 }
 
-return HomeTemplate
+export default HomeTemplate

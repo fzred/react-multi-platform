@@ -6,6 +6,8 @@ import px2rem from '../../../../common/px2rem'
 import Pager from '../../../../components/Pager'
 import { getProductList } from '../../../../../common/actions/activity'
 
+@connect(state => ({ productList: state.activityProductList }))
+@withStyles(s)
 class ProductListRows extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -36,7 +38,7 @@ class ProductListRows extends Component {
         style={{ marginBottom: `${px2rem(item.margin)}rem` }}
       >
         <Pager onLoad={this.fetchProList} model={model}>
-          <div>
+          <div>111111
             {JSON.stringify(model)}
           </div>
         </Pager>
@@ -45,6 +47,4 @@ class ProductListRows extends Component {
   }
 }
 
-export default connect(state => ({
-  productList: state.activityProductList,
-}))(withStyles(s)(ProductListRows))
+export default ProductListRows
