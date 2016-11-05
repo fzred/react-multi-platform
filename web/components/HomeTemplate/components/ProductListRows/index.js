@@ -12,7 +12,7 @@ class ProductListRows extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     item: PropTypes.object.isRequired,
-    productList: PropTypes.object.isRequired,
+    productList: PropTypes.object, // isRequired ws会警告
   }
 
   constructor() {
