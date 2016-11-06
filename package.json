@@ -9,6 +9,7 @@
   "scripts": {
     "app-start": "node node_modules/react-native/local-cli/cli.js start",
     "run-android": "node node_modules/react-native/local-cli/cli.js run-android",
+    "run-ios": "node node_modules/react-native/local-cli/cli.js run-ios",
     "lint": "eslint src tools",
     "csslint": "csscomb src/components --lint --verbose",
     "csscomb": "csscomb src/components --verbose",
