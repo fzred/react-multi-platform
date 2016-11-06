@@ -5,10 +5,14 @@ import Category from './Category'
 import NavTabBar from './NavTabBar/'
 
 function NavTabs(props) {
+  // return (
+  //   <Index />
+  // )
   return (
     <ScrollableTabView
       renderTabBar={() => <NavTabBar />}
       tabBarPosition="bottom"
+      locked
     >
       <Index tabLabel="Home" {...props} />
       <Category tabLabel="Category" {...props} />

@@ -9,32 +9,13 @@ import {
 } from 'react-native'
 import { getHeadPageData } from '../../../../common/actions/home'
 import { color as styleColor } from '../../../styleVar'
-import Type1 from './components/Type1'
-import Type2 from './components/Type2'
-import Type10 from './components/Type10'
-import Type14 from './components/Type14'
+import HomeTemplate from '../../../components/HomeTemplate/index'
 
 const styles = StyleSheet.create({
   wrap: {
     backgroundColor: styleColor.C10,
   },
 })
-
-
-function renderMudule(item, i) {
-  switch (item.mtype) {
-    case 1:
-      return <Type1 key={i} item={item} />
-    case 2:
-      return <Type2 key={i} item={item} />
-    case 10:
-      return <Type10 key={i} item={item} />
-    case 14:
-      return <Type14 key={i} item={item} />
-    default:
-      return null
-  }
-}
 
 class Home extends Component {
 
@@ -81,7 +62,8 @@ class Home extends Component {
           />
         }
       >
-        <View>
+        <View style={{ flex: 1 }}>
+          <HomeTemplate template={homeList} />
           <Text>{JSON.stringify(homeList)}</Text>
         </View>
       </ScrollView>
