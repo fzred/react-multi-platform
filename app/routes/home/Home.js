@@ -12,7 +12,6 @@ function NavTabs(props) {
     <ScrollableTabView
       renderTabBar={() => <NavTabBar />}
       tabBarPosition="bottom"
-      locked
     >
       <Index tabLabel="Home" {...props} />
       <Category tabLabel="Category" {...props} />
