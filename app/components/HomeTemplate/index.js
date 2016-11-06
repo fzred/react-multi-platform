@@ -21,9 +21,9 @@ function renderModule(item) {
 
 function HomeTemplate({ template }) {
   return (
-    <View style={{ flex: 1 }}>
+    <View>
       {template.list.map((item, i) => (
-        <View style={{ flex: 1 }} key={i}>
+        <View key={i}>
           {renderModule(item)}
         </View>
       ))}
