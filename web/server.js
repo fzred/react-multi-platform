@@ -16,7 +16,7 @@ import { ErrorPageWithoutStyle } from './routes/error/ErrorPage'
 import errorPageStyle from './routes/error/ErrorPage.css'
 import routes from './routes'
 import assets from './assets' // eslint-disable-line import/no-unresolved
-import { port, proxyUrl } from './config'
+import { port, proxyUrl, A_CID } from './config'
 import configureStore from './store/configureStore'
 import interceptorsServer from './http/interceptor/server'
 import interceptorsErrCatch from './http/interceptor/errCatch'
@@ -46,7 +46,7 @@ const proxy = httpProxy.createProxyServer({
   changeOrigin: true,
 })
 proxy.on('proxyReq', (proxyReq, req, res, options) => { // eslint-disable-line no-unused-vars
-  proxyReq.setHeader('A-CID', 'MORNING-STAR')
+  proxyReq.setHeader('A-CID', A_CID)
 })
 proxy.on('error', (err, req, res) => {
 //  res.writeHead(500, {
