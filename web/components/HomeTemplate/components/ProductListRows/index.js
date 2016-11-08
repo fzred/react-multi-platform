@@ -31,8 +31,21 @@ class ProductListRows extends Component {
   render() {
     const { item, productList } = this.props
     const model = productList[item.list[0].activityId]
+
+    function renderTitle() {
+      if (item.title) {
+        return (
+          <div className={`flex ${s.title}`}>
+            <div className={s.titleContent}>{item.title}</div>
+          </div>
+        )
+      }
+      return null
+    }
+
     return (
       <div className={s.root}>
+        {renderTitle()}
         <Pager onLoad={this.fetchProList} model={model}>
           <ul>
             {

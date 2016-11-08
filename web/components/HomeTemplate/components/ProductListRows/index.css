@@ -17,6 +17,15 @@
   }
 }
 
+.title {
+  padding: 20px;
+  border-top: 1px solid $C9; /*no*/
+  border-bottom: 1px solid $C9; /*no*/
+  .titleContent {
+    flex: 1;
+  }
+}
+
 .imgWrap {
   width: 100%;
   padding: 40px 0;
