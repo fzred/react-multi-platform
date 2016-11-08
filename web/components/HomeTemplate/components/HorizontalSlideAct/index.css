@@ -1,0 +1,17 @@
+.root {
+  > ul {
+    overflow: auto;
+    white-space: nowrap;
+    margin: 0;
+    padding: 30px 0 30px 30px;
+    > li {
+      box-sizing: border-box;
+      display: inline-block;
+      margin-right: 30px;
+      .img {
+        width: 630px;
+        height: 300px;
+      }
+    }
+  }
+}

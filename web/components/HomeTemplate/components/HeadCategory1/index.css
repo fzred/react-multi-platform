@@ -1,0 +1,49 @@
+@import '../../../../css/vars.css';
+
+.root {
+  background: #fff;
+  a {
+    display: block;
+  }
+  img {
+    display: block;
+  }
+}
+
+.top {
+  border-bottom: 1px solid $C9; /*no*/
+  overflow: hidden;
+  > :nth-child(1) {
+    width: 300px;
+    height: 300px;
+    border-right: 1px solid $C9; /*no*/
+    border-bottom: 1px solid $C9; /*no*/
+    img {
+      width: 100%;
+    }
+  }
+
+  > :nth-child(2) {
+    width: 450px;
+    height: 300px;
+    border-bottom: 1px solid $C9; /*no*/
+    img {
+      width: 100%;
+    }
+    > :nth-child(1) {
+      border-bottom: 1px solid $C9; /*no*/
+    }
+  }
+}
+
+.bottom {
+  overflow: hidden;
+  > * {
+    flex: 1;
+    height: 200px;
+    border-right: 1px solid $C9; /*no*/
+    &:last-child(1) {
+      border-right: 0; /*no*/
+    }
+  }
+}
