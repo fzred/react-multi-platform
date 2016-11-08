@@ -12,6 +12,16 @@
   display: none !important;
 }
 
-
+/*多行省略号*/
+:global(.lineClamp2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.4em;
+  height: 2.8em;
+  min-height: 2.8em;
+}
 
 
