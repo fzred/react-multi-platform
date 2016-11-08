@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import s from './index.css'
 
+@withStyles(s)
 class Pager extends Component {
 
   static propTypes = {
@@ -49,6 +50,7 @@ class Pager extends Component {
   onScrollHandle() {
     if (window.innerHeight + this.elScroll.scrollTop + 50 >= this.elScroll.scrollHeight) {
       this.loadData()
+      console.log('到底') // eslint-disable-line no-console
     }
   }
 
@@ -87,13 +89,19 @@ class Pager extends Component {
 
   render() {
     const { children } = this.props
-
+    let elFoot
+    if (this.state.noMore) {
+      elFoot = (
+        <div className={s.noMore}>没有更多数据</div>
+      )
+    }
     return (
       <div>
         {React.Children.only(children)}
+        {elFoot}
       </div>
     )
   }
 }
 
-export default withStyles(s)(Pager)
+export default Pager

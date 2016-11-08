@@ -1,21 +1,6 @@
 @import '../../css/vars.css';
 
-.dotted {
-  position: absolute;
-  bottom: 20px;
+.noMore {
   text-align: center;
-  width: 100%;
-  > * {
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    text-indent: 10000px;
-    background: $C8;
-    border-radius: 50%;
-    margin: 0 5px;
-  }
-}
-
-.dottedActive {
-  background: $C3;
+  padding: 40px;
 }
