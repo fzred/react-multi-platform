@@ -18,7 +18,7 @@
   background: transparent center top no-repeat;
   background-size: 60px 60px;
   padding: 60px 0 10px 0;
-  color: $C4;
+  color: $BC5;
   text-decoration: none;
   font-size: $H6;
   position: relative;
@@ -30,7 +30,7 @@
 
 .homeActive {
   background-image: url('../../../common/img/footicon/bt_com_menu_home_active.png');
-  color: $C2;
+  color: $BC4;
 }
 
 .search {
@@ -39,7 +39,7 @@
 
 .searchActive {
   background-image: url('../../../common/img/footicon/bt_com_menu_category_active.png');
-  color: $C2;
+  color: $BC4;
 }
 
 .activelist {
@@ -48,7 +48,7 @@
 
 .activelistActive {
   background-image: url('../../../common/img/footicon/bt_com_menu_event_active.png');
-  color: $C2;
+  color: $BC4;
 }
 
 .cart {
@@ -57,7 +57,7 @@
 
 .cartActive {
   background-image: url('../../../common/img/footicon/bt_com_menu_cart_active.png');
-  color: $C2;
+  color: $BC4;
 }
 
 .user {
@@ -66,5 +66,5 @@
 
 .userActive {
   background-image: url('../../../common/img/footicon/bt_com_menu_user_active.png');
-  color: $C2;
+  color: $BC4;
 }
