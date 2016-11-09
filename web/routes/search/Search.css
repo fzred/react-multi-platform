@@ -31,8 +31,10 @@
       color: $C2;
       .cname {
         font-size: $TH6;
-        color: $BC3;
-        border-bottom: 2px solid $BC3; /*no*/
+        span {
+          color: $BC3;
+          border-bottom: 2px solid $BC3; /*no*/
+        }
       }
       .choose {
         display: block;

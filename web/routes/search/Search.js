@@ -15,30 +15,31 @@ const cx = classNames.bind(s)
 class Search extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    category: PropTypes.object,
+    category: PropTypes.array,
   }
-
-  static footHtml = (
-    <div>
-      <FootNav active="search" />
-    </div>
-  )
 
   constructor() {
     super()
     this.state = {
-      curCid: null,
+      curCategory: null,
     }
+    this.footHtml = (
+      <div>
+        <FootNav active="search" />
+      </div>
+    )
   }
 
   componentWillMount() {
+    const { category } = this.props
     this.setState({
-      curCid: Object.keys(this.props.category)[0],
+      curCategory: category[0],
     })
   }
 
   render() {
     const { category } = this.props
+    const subCategory = this.state.curCategory.sublevel
     const footHtml = this.footHtml
     return (
       <Layout layer={footHtml}>
@@ -52,10 +53,10 @@ class Search extends Component {
                     <li
                       key={item}
                       className={cx({
-                        cateogryActive: item === this.state.curCid,
+                        cateogryActive: item === this.state.curCategory.cid,
                       })}
                     >
-                      <div className={s.cname}>{ cate1.categName}</div>
+                      <div className={s.cname}><span>{ cate1.categName}</span></div>
                       <img src="imgs/bg_classification1.png" alt={''} className={s.choose} />
                     </li>
                   )
@@ -63,7 +64,7 @@ class Search extends Component {
               }
             </ul>
             <div className={s.category2}>
-              {JSON.stringify(category)}
+              {JSON.stringify(subCategory)}
             </div>
           </div>
         </div>
