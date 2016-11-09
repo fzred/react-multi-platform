@@ -1,0 +1,55 @@
+@import '../../css/vars.css';
+
+.root {
+  padding-bottom: 120px;
+}
+
+.categoryWarp {
+  align-items: flex-start !important;
+  margin-bottom: 40px;
+}
+
+.category1 {
+  width: 140px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  background-color: $BC7;
+
+  li {
+    position: relative;
+    list-style: none;
+    width: 140px;
+    line-height: 130px;
+    font-size: 28px;
+    .cname {
+      color: $C5;
+      font-size: $TH6;
+    }
+    &.cateogryActive {
+      border-right: none;
+      color: $C2;
+      .cname {
+        font-size: $TH6;
+        color: $BC3;
+        border-bottom: 2px solid $BC3; /*no*/
+      }
+      .choose {
+        display: block;
+        position: absolute;
+        width: 16px;
+        height: 34px;
+        right: 0;
+        top: 50px;
+      }
+    }
+    .choose {
+      display: none;
+    }
+  }
+}
+
+.category2 {
+  width: 610px;
+  padding: 30px 30px 20px 30px;
+}

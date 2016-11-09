@@ -24,7 +24,7 @@ function FootNav({ children, active }) {
             search: active !== 'search',
             searchActive: active === 'search',
           })}
-          to={{ name: 'orderDetail', params: { orderId: '1124436643' } }}
+          to={{ name: 'search' }}
         >分类</Link>
         <a
           className={cx({
@@ -39,7 +39,7 @@ function FootNav({ children, active }) {
             cart: active !== 'cart',
             cartActive: active === 'cart',
           })}
-          to="/cart"
+          to={{ name: 'orderDetail', params: { orderId: '1124436643' } }}
         >购物车</Link>
         <Link
           className={cx({

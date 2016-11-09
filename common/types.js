@@ -1,4 +1,3 @@
-
 // set 根据活动ID活动商品列表
 export const ACTIVITY_PRODUCT_LIST_SET = 'ACTIVITY_PRODUCT_LIST_SET'
 // 拼接 根据活动ID活动商品列表
@@ -16,3 +15,8 @@ export const LOADING_COMPLETE = 'LOADING_COMPLETE'
 
 // set首页模块
 export const HOME_MODULE_SET = 'HOME_MODULE_SET'
+
+// 一级分类
+export const CATEGORY_1_LEVEL_SET = 'CATEGORY_1_Level_SET'
+// 二级分类
+export const CATEGORY_2_LEVEL_SET = 'CATEGORY_2_Level_SET'
