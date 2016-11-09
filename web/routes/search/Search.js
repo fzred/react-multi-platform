@@ -37,9 +37,14 @@ class Search extends Component {
     })
   }
 
+  switchCategory(cate) {
+    console.log(this, cate)
+  }
+
   render() {
     const { category } = this.props
-    const subCategory = this.state.curCategory.sublevel
+    const { curCategory } = this.state
+    const subCategory = curCategory.sublevel
     const footHtml = this.footHtml
     return (
       <Layout layer={footHtml}>
@@ -47,20 +52,18 @@ class Search extends Component {
           <div className={`flex ${s.categoryWarp}`}>
             <ul className={s.category1}>
               {
-                Object.keys(category).map(item => {
-                  const cate1 = category[item]
-                  return (
-                    <li
-                      key={item}
-                      className={cx({
-                        cateogryActive: item === this.state.curCategory.cid,
-                      })}
-                    >
-                      <div className={s.cname}><span>{ cate1.categName}</span></div>
-                      <img src="imgs/bg_classification1.png" alt={''} className={s.choose} />
-                    </li>
-                  )
-                })
+                category.map(item => (
+                  <li
+                    key={item.cid}
+                    className={cx({
+                      cateogryActive: item === curCategory,
+                    })}
+                    onClick={() => this.switchCategory(item)}
+                  >
+                    <div className={s.cname}><span>{item.categName}</span></div>
+                    <img src="imgs/bg_classification1.png" alt={''} className={s.choose} />
+                  </li>
+                ))
               }
             </ul>
             <div className={s.category2}>
