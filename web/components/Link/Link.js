@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import Uri from 'jsuri'
 
 function isLeftClickEvent(event) {
   return event.button === 0
@@ -42,7 +43,15 @@ class Link extends Component {
     if (typeof to === 'string') {
       return to
     }
-    return this.context.toPath(to)
+    let url = this.context.toPath(to)
+    if (to.query) {
+      const uri = new Uri(url)
+      Object.keys(to.query).forEach(key => {
+        uri.addQueryParam(key, to.query[key])
+      })
+      url = uri.toString()
+    }
+    return url
   }
 
   render() {
