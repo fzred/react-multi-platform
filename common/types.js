@@ -20,3 +20,8 @@ export const HOME_MODULE_SET = 'HOME_MODULE_SET'
 export const CATEGORY_1_LEVEL_SET = 'CATEGORY_1_Level_SET'
 // 二级分类
 export const CATEGORY_2_LEVEL_SET = 'CATEGORY_2_Level_SET'
+// 搜索商品
+export const SEARCH_PRO_LIST_SET = 'SEARCH_PRO_LIST_SET'
+// 搜索商品 拼接
+export const SEARCH_PRO_LIST_CONAT = 'SEARCH_PRO_LIST_CONAT'
+

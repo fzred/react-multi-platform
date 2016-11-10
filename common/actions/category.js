@@ -1,6 +1,8 @@
 import {
   CATEGORY_1_LEVEL_SET,
   CATEGORY_2_LEVEL_SET,
+  SEARCH_PRO_LIST_SET,
+  SEARCH_PRO_LIST_CONAT,
 } from '../types'
 
 
@@ -32,4 +34,20 @@ export function getCategory1Level() {
       return data
     })
   )
+}
+
+export function searchPro(params) {
+  return (dispatch, getState, { fd }) => {
+    let url = '/b2c-product/api/item/itemList'
+    if (params.qryText) {
+      // 关键字搜索
+      url = '/b2c-product/api/item/searchItemList'
+    }
+    fd.get(url, params).then(({ data }) => {
+      dispatch({
+        type: params.startNum > 0 ? SEARCH_PRO_LIST_CONAT : SEARCH_PRO_LIST_SET,
+        data,
+      })
+    })
+  }
 }
