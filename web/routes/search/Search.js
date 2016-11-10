@@ -5,6 +5,7 @@ import classNames from 'classnames/bind'
 import Layout from '../../components/Layout'
 import FootNav from '../../components/FootNav'
 import s from './Search.css'
+import { getCategory2Level } from '../../../common/actions/category'
 
 const cx = classNames.bind(s)
 
@@ -31,20 +32,25 @@ class Search extends Component {
   }
 
   componentWillMount() {
-    const { category } = this.props
     this.setState({
-      curCategory: category[0],
+      curCategoryIndex: 0,
     })
   }
 
-  switchCategory(cate) {
-    console.log(this, cate)
+  switchCategory(index) {
+    const cate = this.props.category[index]
+    if (!cate.sublevel) {
+      this.props.dispatch(getCategory2Level({ categId: cate.cid }))
+    }
+    this.setState({
+      curCategoryIndex: index,
+    })
   }
 
   render() {
     const { category } = this.props
-    const { curCategory } = this.state
-    const subCategory = curCategory.sublevel
+    const curCategory = category[this.state.curCategoryIndex]
+    const subCategory = curCategory.sublevel || []
     const footHtml = this.footHtml
     return (
       <Layout layer={footHtml}>
@@ -52,13 +58,13 @@ class Search extends Component {
           <div className={`flex ${s.categoryWarp}`}>
             <ul className={s.category1}>
               {
-                category.map(item => (
+                category.map((item, i) => (
                   <li
                     key={item.cid}
                     className={cx({
-                      cateogryActive: item === curCategory,
+                      cateogryActive: item.cid === curCategory.cid,
                     })}
-                    onClick={() => this.switchCategory(item)}
+                    onClick={() => this.switchCategory(i)}
                   >
                     <div className={s.cname}><span>{item.categName}</span></div>
                     <img src="imgs/bg_classification1.png" alt={''} className={s.choose} />
