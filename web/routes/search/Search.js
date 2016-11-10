@@ -4,8 +4,10 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import classNames from 'classnames/bind'
 import Layout from '../../components/Layout'
 import FootNav from '../../components/FootNav'
+import Link from '../../components/Link'
 import s from './Search.css'
 import { getCategory2Level } from '../../../common/actions/category'
+import bgClassification1 from './img/bg_classification1.png'
 
 const cx = classNames.bind(s)
 
@@ -67,13 +69,32 @@ class Search extends Component {
                     onClick={() => this.switchCategory(i)}
                   >
                     <div className={s.cname}><span>{item.categName}</span></div>
-                    <img src="imgs/bg_classification1.png" alt={''} className={s.choose} />
+                    <img src={bgClassification1} alt={''} className={s.choose} />
                   </li>
                 ))
               }
             </ul>
             <div className={s.category2}>
-              {JSON.stringify(subCategory)}
+              <ul className={s.subCategory}>
+                {
+                  subCategory.map((value, i) => (
+                    <li key={i}>
+                      <Link
+                        to={{
+                          name: 'searchResult',
+                          query: {
+                            categId: value.parentCategId,
+                            secondCategId: value.scid,
+                          },
+                        }}
+                      >
+                        <img src={value.logourl} alt={value.categName} />
+                        <p>{value.categName}</p>
+                      </Link>
+                    </li>
+                  ))
+                }
+              </ul>
             </div>
           </div>
         </div>
