@@ -6,7 +6,7 @@ import {
 
 export function getCategory2Level({ categId }) {
   return (dispatch, getState, { fd }) => (
-    fd.get('/b2c-product/api/categ/itemCategList', { categId }).then(({ data }) => {
+    fd.get('/b2c-product/api/categ/itemSecondCategList', { categId }).then(({ data }) => {
       dispatch({
         type: CATEGORY_2_LEVEL_SET,
         categId,
