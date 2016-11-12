@@ -9,13 +9,13 @@ export default function home(state = {}, action) {
       return { ...state, [action.activityId]: action.data }
     case ACTIVITY_PRODUCT_LIST_CONCAT: {
       const newState = { ...state }
+      let newList = action.data.list
       if (newState[action.activityId]) {
         // 已存在，拼接在后面，瀑布式
         const oldData = newState[action.activityId]
-        // eslint-disable-next-line no-param-reassign
-        action.data.list = [...action.data.list, ...oldData.list]
+        newList = [...oldData.list, ...newList]
       }
-      newState[action.activityId] = action.data
+      newState[action.activityId] = { ...action.data, list: newList }
       return newState
     }
     default:
