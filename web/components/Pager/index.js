@@ -33,7 +33,7 @@ class Pager extends Component {
       startNum: this.props.startNum,
     })
     this.computedModelState()
-    if (!this.props.model) {
+    if (process.env.BROWSER && this.state.startNum === 0) {
       this.loadData()
     }
   }

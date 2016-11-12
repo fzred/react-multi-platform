@@ -7,8 +7,7 @@ export default {
 
   name: 'searchResult',
 
-  action({ store, query }) {
-    store.getState()
+  async action({ query }) {
     return {
       title: '搜索结果',
       component: <Result query={query} />,
