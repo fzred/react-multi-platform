@@ -3,6 +3,7 @@ import {
   CATEGORY_2_LEVEL_SET,
   SEARCH_PRO_LIST_SET,
   SEARCH_PRO_LIST_CONAT,
+  SEARCH_PRO_KEY_SET,
 } from '../types'
 
 
@@ -43,11 +44,18 @@ export function searchPro(params) {
       // 关键字搜索
       url = '/b2c-product/api/item/searchItemList'
     }
-    fd.get(url, params).then(({ data }) => {
+    return fd.get(url, params).then(({ data }) => {
       dispatch({
         type: params.startNum > 0 ? SEARCH_PRO_LIST_CONAT : SEARCH_PRO_LIST_SET,
         data,
       })
     })
+  }
+}
+
+export function setSearchKey(word) {
+  return {
+    type: SEARCH_PRO_KEY_SET,
+    data: word,
   }
 }

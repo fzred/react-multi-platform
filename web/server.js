@@ -8,7 +8,6 @@ import ReactDOM from 'react-dom/server'
 import createMemoryHistory from 'history/createMemoryHistory'
 import PrettyError from 'pretty-error'
 import httpProxy from 'http-proxy'
-import FetchDog from 'fetch-dog'
 import UniversalRouter from '../common/universalRouter'
 import App from './components/App'
 import Html from './components/Html'
@@ -21,6 +20,7 @@ import configureStore from './store/configureStore'
 import interceptorsServer from './http/interceptor/server'
 import interceptorsErrCatch from './http/interceptor/errCatch'
 import fetch, { Headers } from './core/fetch'
+import FetchDog from '../common/http'
 
 const app = express()
 //
