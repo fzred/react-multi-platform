@@ -1,5 +1,7 @@
+import { assign } from '../util'
+
 export default function (requestConfig) {
-  const request = Object.assign({}, requestConfig)
+  const request = assign({}, requestConfig)
   const { url, options } = request
   if (options.client) {
     // 自定义http请求handle
@@ -9,5 +11,6 @@ export default function (requestConfig) {
   delete request.data
   delete request.options
   delete request.url
-  return this.fetch(url, request)
+  const fetch = this.fetch // 先保留变量，防止this指向问题
+  return fetch(url, request)
 }

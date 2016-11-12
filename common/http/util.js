@@ -39,6 +39,11 @@ export function each(obj, iterator) {
     for (const key of Object.getOwnPropertyNames(obj)) {
       iterator.call(obj[key], obj[key], key)
     }
+    // for (const key in obj) {
+    //   if (obj.hasOwnProperty(key)) {
+    //     iterator.call(obj[key], obj[key], key)
+    //   }
+    // }
   }
 
   return obj
@@ -63,6 +68,17 @@ function _merge(target, source, deep) {
     }
   })
 }
+
+// eslint-disable-next-line no-underscore-dangle
+function _assign(target, ...sources) {
+  sources.forEach((source) => {
+    _merge(target, source)
+  })
+
+  return target
+}
+
+export const assign = Object.assign || _assign
 
 export function merge(target, ...sources) {
   sources.forEach((source) => {
