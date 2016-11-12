@@ -18,7 +18,7 @@ const cx = classNames.bind(s)
 class Search extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    category: PropTypes.array,
+    category: PropTypes.object,
   }
 
   constructor() {
@@ -40,7 +40,7 @@ class Search extends Component {
   }
 
   switchCategory(index) {
-    const cate = this.props.category[index]
+    const cate = this.props.category.list[index]
     if (!cate.sublevel) {
       this.props.dispatch(getCategory2Level({ categId: cate.cid }))
     }
@@ -50,7 +50,7 @@ class Search extends Component {
   }
 
   render() {
-    const { category } = this.props
+    const category = this.props.category.list
     const curCategory = category[this.state.curCategoryIndex]
     const subCategory = curCategory.sublevel || []
     const footHtml = this.footHtml

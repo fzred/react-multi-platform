@@ -12,7 +12,7 @@ import s from './Result.css'
 class Result extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    category: PropTypes.array,
+    category: PropTypes.object,
     query: PropTypes.object.isRequired,
   }
 
