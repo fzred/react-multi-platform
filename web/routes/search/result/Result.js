@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import Layout from '../../../components/Layout'
 import Pager from '../../../components/Pager'
+import Link from '../../../components/Link'
 import { setSearchKey, searchPro } from '../../../../common/actions/category'
 import s from './Result.css'
 
@@ -52,8 +53,10 @@ class Result extends Component {
               {
                 proList.list.map((item, i) => (
                   <li key={i}>
-                    <img src={item.itemLogoUrl} alt={item.itemTitle} style={{ height: '200px' }} />
-                    <p>{item.itemTitle}</p>
+                    <Link to={{ name: 'productDetail', params: { itemCode: item.itemCode } }}>
+                      <img src={item.itemLogoUrl} alt={item.itemTitle} style={{ height: '200px' }} />
+                      <p>{item.itemTitle}</p>
+                    </Link>
                   </li>
                 ))
               }

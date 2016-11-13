@@ -14,6 +14,7 @@ export default {
     require('./user').default,
     // require('./contact').default,
     require('./login').default,
+    require('./product').default,
     // require('./register').default,
     //
     // // place new routes before...
