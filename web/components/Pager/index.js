@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import s from './index.css'
 
-@withStyles(s)
+// @withStyles(s)
 class Pager extends Component {
 
   static propTypes = {
@@ -33,12 +33,12 @@ class Pager extends Component {
       startNum: this.props.startNum,
     })
     this.computedModelState()
-    if (process.env.BROWSER && this.state.startNum === 0) {
-      this.loadData()
-    }
   }
 
   componentDidMount() {
+    // if (process.env.BROWSER) {
+    //   this.loadData({ isFirst: true })
+    // }
     this.elScroll = document.querySelector('#scroll')
     this.elScroll.addEventListener('scroll', this.onScrollHandle)
   }
@@ -49,7 +49,7 @@ class Pager extends Component {
 
   onScrollHandle() {
     if (window.innerHeight + this.elScroll.scrollTop + 50 >= this.elScroll.scrollHeight) {
-      this.loadData()
+      this.loadNextPageData()
       console.log('到底') // eslint-disable-line no-console
     }
   }
@@ -64,12 +64,19 @@ class Pager extends Component {
     }
   }
 
-  async loadData() {
+  reloadData() {
+    return this._loadData(0)
+  }
+
+  loadNextPageData() {
+    return this._loadData()
+  }
+
+  async _loadData(startNum = this.state.startNum) {
     if (this.state.loading || this.state.noMore) {
       return
     }
     const { onLoad, pageSize } = this.props
-    const startNum = this.state.startNum
     this.setState({
       loading: true,
     })

@@ -17,21 +17,36 @@ class Result extends Component {
     query: PropTypes.object.isRequired,
   }
 
-  onSearchPro = ({ startNum, pageSize }) => {
+  constructor() {
+    super()
+    this.state = {
+      isReload: false,
+    }
+  }
+
+  componentWillMount() {
+
+  }
+
+  componentDidMount() {
     const { category, dispatch } = this.props
     const query = { ...this.props.query }
     const queryStr = JSON.stringify(query)
-    if (category.searchParamsStr !== queryStr) {
+    const isReload = category.searchParamsStr !== queryStr
+    if (process.env.BROWSER && isReload) {
       // 搜索关键字不一样
       dispatch(setSearchKey(queryStr))
-      // 重新加载
-      query.startNum = 0
-    } else {
-      query.startNum = startNum
     }
+    if (isReload) {
+      this.pager.reloadData()
+    }
+  }
+
+  onSearchPro = ({ startNum, pageSize }) => {
+    const { dispatch } = this.props
+    const query = { ...this.props.query, startNum, pageSize }
     query.sortType = 'DATE'
     query.scope = 'ALL'
-    query.pageSize = pageSize
     return dispatch(searchPro(query))
   }
 
@@ -40,7 +55,13 @@ class Result extends Component {
     return (
       <Layout>
         <div className={s.root}>
-          <Pager onLoad={this.onSearchPro} model={proList}>
+          <Pager
+            ref={(r) => {
+              this.pager = r
+            }}
+            onLoad={this.onSearchPro}
+            model={proList}
+          >
             <ul>
               {
                 proList.list.map((item, i) => (
