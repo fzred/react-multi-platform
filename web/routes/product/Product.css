@@ -1,5 +1,5 @@
 @import '../../css/vars.css';
 
 .root {
-  padding-bottom: 120px;
+  background: $C10;
 }
