@@ -4,6 +4,7 @@ import activityProductList from './activityProductList'
 import { usersInfo } from './user'
 import loadingCount from './loadingCount'
 import category from './category'
+import product from './product'
 
 const App = combineReducers({
   home,
@@ -11,6 +12,7 @@ const App = combineReducers({
   usersInfo,
   loadingCount,
   category,
+  product,
 })
 
 export default App
