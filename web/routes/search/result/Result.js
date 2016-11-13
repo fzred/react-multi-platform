@@ -21,12 +21,9 @@ class Result extends Component {
     const { category, dispatch } = this.props
     const query = { ...this.props.query }
     const queryStr = JSON.stringify(query)
-    const isReload = category.searchParamsStr !== queryStr
-    if (process.env.BROWSER && isReload) {
+    if (category.searchParamsStr !== queryStr) {
       // 搜索关键字不一样
       dispatch(setSearchKey(queryStr))
-    }
-    if (isReload) {
       this.pager.reloadData()
     }
   }
