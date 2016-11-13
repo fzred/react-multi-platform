@@ -17,17 +17,6 @@ class Result extends Component {
     query: PropTypes.object.isRequired,
   }
 
-  constructor() {
-    super()
-    this.state = {
-      isReload: false,
-    }
-  }
-
-  componentWillMount() {
-
-  }
-
   componentDidMount() {
     const { category, dispatch } = this.props
     const query = { ...this.props.query }
