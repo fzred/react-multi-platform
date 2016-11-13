@@ -18,6 +18,7 @@
     "react/require-extension": "off",
     "no-mixed-operators": 0,
     "jsx-a11y/no-static-element-interactions":0,
-    "semi": [2, "never"]
+    "semi": [2, "never"],
+    "no-underscore-dangle": [2, { "allowAfterThis": true }]
   }
 }
