@@ -16,6 +16,7 @@ export const LOADING_COMPLETE = 'LOADING_COMPLETE'
 // set首页模块
 export const HOME_MODULE_SET = 'HOME_MODULE_SET'
 
+// region 分类页面相关
 // 一级分类
 export const CATEGORY_1_LEVEL_SET = 'CATEGORY_1_Level_SET'
 // 二级分类
@@ -26,4 +27,15 @@ export const SEARCH_PRO_LIST_SET = 'SEARCH_PRO_LIST_SET'
 export const SEARCH_PRO_LIST_CONAT = 'SEARCH_PRO_LIST_CONAT'
 // 搜索商品关键字
 export const SEARCH_PRO_KEY_SET = 'SEARCH_PRO_KEY_SET'
+// endregion
 
+// region 商品详情相关
+// 商品详情
+export const PRODUCT_ITEM_DETAIL_SET = 'PRODUCT_ITEM_DETAIL_SET'
+// 商品规则
+export const PRODUCT_ITEM_STANBDARD_SET = 'PRODUCT_ITEM_STANBDARD_SET'
+// 商品图文详情
+export const PRODUCT_ITEM_GRAPHIC_DETAIL_SET = 'PRODUCT_ITEM_GRAPHIC_DETAIL_SET'
+// 商品关联的推荐商品
+export const PRODUCT_ITEM_RECOMMEND_PRODUCT_SET = 'PRODUCT_ITEM_RECOMMEND_PRODUCT_SET'
+// endregion
