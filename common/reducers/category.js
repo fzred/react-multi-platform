@@ -39,7 +39,7 @@ export default function category(state = initState, action) {
     }
     case SEARCH_PRO_LIST_CONAT: {
       const newState = { ...state }
-      const newList = [...action.data.list, ...newState.proList.list]
+      const newList = [...newState.proList.list, ...action.data.list]
       newState.proList = { ...action.data, list: newList }
       return newState
     }
