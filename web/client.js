@@ -10,7 +10,7 @@ import configureStore from './store/configureStore'
 import App from './components/App'
 import fetch, { Headers } from './core/fetch'
 import FetchDog from '../common/http'
-
+import { getPageScroll, scrollTo } from './common/utils'
 import interceptorsErrCatch from './http/interceptor/errCatch'
 import interceptorsClient from './http/interceptor/client'
 
@@ -94,18 +94,18 @@ let onRenderComplete = function initialRenderComplete() {
     // updateLink('canonical', route.canonicalUrl);
     // etc.
 
-    let scrollX = 0
-    let scrollY = 0
+    let scrollLeft = 0
+    let scrollTop = 0
     const pos = scrollPositionsHistory[location.key]
     if (pos) {
-      scrollX = pos.scrollX
-      scrollY = pos.scrollY
+      scrollLeft = pos.scrollLeft
+      scrollTop = pos.scrollTop
     } else if (location.hash) {
       const targetHash = location.hash.substr(1)
       if (targetHash) {
         const target = document.getElementById(targetHash)
         if (target) {
-          scrollY = window.pageYOffset + target.getBoundingClientRect().top
+          scrollTop = window.pageYOffset + target.getBoundingClientRect().top
         }
       }
     }
@@ -113,7 +113,7 @@ let onRenderComplete = function initialRenderComplete() {
     // Restore the scroll position if it was saved into the state
     // or scroll to the given #hash anchor
     // or scroll to top of the page
-    window.scrollTo(scrollX, scrollY)
+    scrollTo({ scrollLeft, scrollTop })
 
     // Google Analytics tracking. Don't send 'pageview' event after
     // the initial rendering, as it was already sent
@@ -146,10 +146,7 @@ let currentLocation = context.history.location
 // Re-render the app when window.location changes
 async function onLocationChange(location) {
   // Remember the latest scroll position for the previous location
-  scrollPositionsHistory[currentLocation.key] = {
-    scrollX: window.pageXOffset,
-    scrollY: window.pageYOffset,
-  }
+  scrollPositionsHistory[currentLocation.key] = getPageScroll()
   // Delete stored scroll position for next page if any
   if (history.action === 'PUSH') {
     delete scrollPositionsHistory[location.key]

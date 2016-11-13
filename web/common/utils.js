@@ -8,3 +8,17 @@ export function isWeixin() {
   const ua = navigator.userAgent.toLowerCase()
   return ua.match(/MicroMessenger/i)
 }
+
+export function getPageScroll() {
+  const scroll = document.querySelector('#scroll')
+  return {
+    scrollTop: scroll.scrollTop,
+    scrollLeft: scroll.scrollLeft,
+  }
+}
+
+export function scrollTo({ scrollLeft = 0, scrollTop = 0 }) {
+  const scroll = document.querySelector('#scroll')
+  scroll.scrollLeft = scrollLeft
+  scroll.scrollTop = scrollTop
+}
