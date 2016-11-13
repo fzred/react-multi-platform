@@ -1,4 +1,6 @@
 import React from 'react'
+import Product from './Product'
+import { getDetail, getGraphicDetail, getRecommendProduct, getStandard } from '../../../common/actions/product'
 
 export default {
 
@@ -6,12 +8,19 @@ export default {
 
   name: 'productDetail',
 
-  action(context, { itemCode }) {
+  async action({ store }, { itemCode }) {
+    if (!store.getState().product[itemCode]) {
+      await Promise.all([
+        store.dispatch(getDetail({ itemCode })),
+        store.dispatch(getGraphicDetail({ itemCode })),
+        store.dispatch(getRecommendProduct({ itemCode })),
+        store.dispatch(getStandard({ itemCode })),
+      ])
+    }
+
     return {
       title: `商品详情：${itemCode}`,
-      component: (
-        <div>{itemCode}</div>
-      ),
+      component: <Product itemCode={itemCode} />,
     }
   },
 
