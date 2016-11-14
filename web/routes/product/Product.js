@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import Layout from '../../components/Layout'
+import GraphicDetail from './components/GraphicDetail'
 import s from './Product.css'
 
 @connect(state => ({
@@ -16,10 +17,14 @@ class Product extends Component {
   }
 
   render() {
-    const product = this.props.product[this.props.itemCode]
+    const itemCode = this.props.itemCode
+    const product = this.props.product[itemCode]
     return (
       <Layout>
-        <div>{JSON.stringify(product)}</div>
+        <div>
+          {JSON.stringify(product)}
+          <GraphicDetail itemCode={itemCode} />
+        </div>
       </Layout>
     )
   }
