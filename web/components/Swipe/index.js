@@ -59,12 +59,12 @@ class Swipe extends Component {
 
 
   componentDidMount() {
-    const { swipeOptions } = this.props
+    const { swipeOptions, children } = this.props
     const callback = swipeOptions.callback
     swipeOptions.callback = i => {
       if (callback) callback(i)
       this.setState({
-        curIndex: i,
+        curIndex: i % children.length,
       })
     }
     this.swipe = swipe(this.container, swipeOptions)

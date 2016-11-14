@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import Layout from '../../components/Layout'
 import GraphicDetail from './components/GraphicDetail'
+import DetailBanner from './components/DetailBanner'
 import s from './Product.css'
 
 @connect(state => ({
@@ -22,7 +23,7 @@ class Product extends Component {
     return (
       <Layout>
         <div>
-          {JSON.stringify(product)}
+          <DetailBanner itemCode={itemCode} />
           <GraphicDetail itemCode={itemCode} />
         </div>
       </Layout>

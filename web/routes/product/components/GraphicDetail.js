@@ -9,7 +9,6 @@ import s from './GraphicDetail.css'
 @withStyles(s)
 class GraphicDetail extends Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
     product: PropTypes.object,
     itemCode: PropTypes.string.isRequired,
   }
