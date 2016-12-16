@@ -4,6 +4,10 @@
   version "6.0.52"
   resolved "http://r.cnpmjs.org/@types/node/download/@types/node-6.0.52.tgz#1ac3a99b42320f9e463482f25af4c2359473aaa6"
 
+"@types/query-string":
+  version "3.0.31"
+  resolved "http://r.cnpmjs.org/@types/query-string/download/@types/query-string-3.0.31.tgz#9b5020ffbf7434afb092ca15f05c3fc000284fa4"
+
 "@types/react", "@types/react@*":
   version "0.14.55"
   resolved "http://r.cnpmjs.org/@types/react/download/@types/react-0.14.55.tgz#f7f7a6ad0c94780531e95632435b2798c5dad11b"
