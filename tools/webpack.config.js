@@ -45,6 +45,7 @@ const config = {
 
   module: {
     loaders: [
+      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
@@ -169,7 +170,7 @@ const config = {
 // -----------------------------------------------------------------------------
 
 const clientConfig = extend(true, {}, config, {
-  entry: './client.js',
+  entry: './client.tsx',
 
   output: {
     filename: DEBUG ? '[name].js?[chunkhash]' : '[name].[chunkhash].js',
