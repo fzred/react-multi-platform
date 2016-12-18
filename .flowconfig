@@ -54,5 +54,5 @@ suppress_comment=\\(.\\|\n\\)*\\$FlowFixedInNextDeploy
 
 unsafe.enable_getters_and_setters=true
 
-[version]
-^0.30.0
+# [version]
+# ^0.37.0

@@ -1,3 +1,7 @@
+/**
+ * 浏览器端入口文件
+ * @flow
+ */
 import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -13,6 +17,10 @@ import FetchDog from '../common/http'
 import { getPageScroll, scrollTo } from './common/utils'
 import interceptorsErrCatch from './http/interceptor/errCatch'
 import interceptorsClient from './http/interceptor/client'
+
+let a : number = 'f'
+a = 12
+console.log(a)
 
 const fd = new FetchDog({ fetch, Headers })
 const initialState = JSON.parse(
