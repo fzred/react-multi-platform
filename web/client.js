@@ -18,16 +18,25 @@ import { getPageScroll, scrollTo } from './common/utils'
 import interceptorsErrCatch from './http/interceptor/errCatch'
 import interceptorsClient from './http/interceptor/client'
 
-let a : number = 'f'
-a = 12
+let a: number = 'fdff'
+a = 'ffd'
 console.log(a)
+
+function b(p: string) {
+  return p.length
+}
+
+// $FlowIgnore fff
+b(2)
 
 const fd = new FetchDog({ fetch, Headers })
 const initialState = JSON.parse(
+  // $FlowIgnore 参数为 string 或 null undefined
   document
     .getElementById('source')
     .getAttribute('data-initial-state')
 )
+
 const store = configureStore(initialState, {
   history,
   fd,
@@ -61,7 +70,7 @@ function updateTag(tagName, keyName, keyValue, attrName, attrValue) {
   if (node && node.getAttribute(attrName) === attrValue) return
 
   // Remove and create a new tag in order to make it work with bookmarks in Safari
-  if (node) {
+  if (node && node.parentNode) {
     node.parentNode.removeChild(node)
   }
   if (typeof attrValue === 'string') {
@@ -90,7 +99,7 @@ if (window.history && 'scrollRestoration' in window.history) {
 
 let onRenderComplete = function initialRenderComplete() {
   const elem = document.getElementById('css')
-  if (elem) elem.parentNode.removeChild(elem)
+  if (elem && elem.parentNode) elem.parentNode.removeChild(elem)
   onRenderComplete = function renderComplete(route, location) {
     document.title = route.title
 
@@ -156,7 +165,7 @@ async function onLocationChange(location) {
   // Remember the latest scroll position for the previous location
   scrollPositionsHistory[currentLocation.key] = getPageScroll()
   // Delete stored scroll position for next page if any
-  if (history.action === 'PUSH') {
+  if (window.history.action === 'PUSH') {
     delete scrollPositionsHistory[location.key]
   }
   currentLocation = location
@@ -199,7 +208,7 @@ onLocationChange(currentLocation)
 
 // Enable Hot Module Replacement (HMR)
 if (module.hot) {
-  module.hot.accept('./routes', () => {
+  (module: any).hot.accept('./routes', () => {
     routes = require('./routes').default // eslint-disable-line global-require
 
     onLocationChange(currentLocation)
