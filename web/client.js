@@ -15,19 +15,9 @@ import App from './components/App'
 import fetch, { Headers } from './core/fetch'
 import FetchDog from '../common/http'
 import { getPageScroll, scrollTo } from './common/utils'
+import RedirectError from './http/RedirectError'
 import interceptorsErrCatch from './http/interceptor/errCatch'
 import interceptorsClient from './http/interceptor/client'
-
-let a: number = 'fdff'
-a = 'ffd'
-console.log(a)
-
-function b(p: string) {
-  return p.length
-}
-
-// $FlowIgnore fff
-b(2)
 
 const fd = new FetchDog({ fetch, Headers })
 const initialState = JSON.parse(
@@ -178,7 +168,7 @@ async function onLocationChange(location) {
       query: queryString.parse(location.search),
       store,
       redirect(to) {
-        const error = new Error(`Redirecting to "${to}"...`)
+        const error = new RedirectError(`Redirecting to "${to}"...`)
         error.status = 301
         error.path = to
         throw error
